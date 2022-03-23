@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts/script.js"></script>
+    <title>Tambah Wali Kelas</title>
+</head>
+<body>
+    <div class="rowAdd">
+        <div class="colAdd">
+            <form action="showWalkas.html" method="post">
+                <table>
+                    <tr>
+                        <td>Kelas</td>
+                        <td>:</td>
+                        <td><input type="text" name="kelas" id="add-wclass"></td>
+                    </tr>
+                    <tr>
+                        <td>Nama Wakli Kelas</td>
+                        <td>:</td>
+                        <td>
+                            <select name="namaWalkas" id="add-walkas">
+                                <option value="null">Pilih Wali Kelas</option>
+                                <option value="Afila">Afila</option>
+                                <option value="Ansori">Ansori</option>
+                                <option value="Adrianus">Adrianus</option>
+                                <option value="Indraprasta">Indraprasta</option>
+                                <option value="Dwicaksana">Dwicaksana</option>
+                                <option value="Dimas">Dimas</option>
+                                <option value="Ajisaka">Ajisaka</option>
+                                <option value="kurniawan">Kurniawan</option>
+                                <option value="Rangga">Rangga</option>
+                                <option value="Ayaka">Ayaka</option>
+                                <option value="Asta">Asta</option>
+                                <option value="Ayato">Ayata</option>
+                                <option value="Makoto">Makoto</option>
+                                <option value="Sinkai">Sinkai</option>
+                                <option value="Yamada">Yamada</option>
+                                <option value="Naruto">Naruto</option>
+                                <option value="Tanjiro">Tanjiro</option>
+                                <option value="Nezuko">Nezuko</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" name="Simpan" value="Simpan" onclick="addWalkas()">
+                <input type="reset" value="Reset">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
