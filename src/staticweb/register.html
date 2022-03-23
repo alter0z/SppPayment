@@ -11,36 +11,17 @@
         <div class="rowFrom">
             <div class="colFrom">
                 <form action="login.html" method="post">
-                    <table>
-                        <p>Register</p>
-                        <tr>
-                            <td>Nama</td>
-                            <td>:</td>
-                            <td><input type="text" name="nama" id="reg-name" /></td>
-                        </tr>
-                        <tr>
-                            <td>Role</td>
-                            <td>:</td>
-                            <td>
-                                <select name="Role" id="reg-role">
-                                    <option value="null">Pilih Role</option>
-                                    <option value="petugas">Petugas Bendahara</option>
-                                    <option value="wali kelas">Wali Kelas</option>
-                                    <option value="siswa">Siswa</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Username</td>
-                            <td>:</td>
-                            <td><input type="text" name="username" id="reg-user" /></td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td>:</td>
-                            <td><input type="password" name="password" id="reg-pass" /></td>
-                        </tr>
-                    </table>
+                        <input type="text" name="nama" id="reg-name" placeholder="Nama ex: Asep Budi" />
+                        <br>
+                            <select name="Role" id="reg-role">
+                                <option value="null">Pilih Role</option>
+                                <option value="petugas">Petugas Bendahara</option>
+                                <option value="wali kelas">Wali Kelas</option>
+                                <option value="siswa">Siswa</option>
+                            </select>
+                            <br>
+                        <input type="text" name="username" id="reg-user" placeholder="Username ex: User123"/><br>
+                        <input type="password" name="password" id="reg-pass" placeholder="Password"/><br>
                     <input type="submit" name="Register" value="Register" onclick="getRegister()" />
                     <input type="reset" value="Reset" />
                 </form>
