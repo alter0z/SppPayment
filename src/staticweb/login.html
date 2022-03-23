@@ -11,30 +11,17 @@
         <div class="rowFrom">
             <div class="colFrom">
                 <form action="index.html" method="get">
-                    <table>
-                        <tr>
-                            <td>Username</td>
-                            <td>:</td>
-                            <td><input type="username" name="username" id="log-user" /></td>
-                        </tr>
-                        <tr>
-                            <td>Role</td>
-                            <td>:</td>
-                            <td>
-                                <select name="Role" id="log-role">
-                                    <option value="null">Pilih Role</option>
-                                    <option value="petugas">Petugas Bendahara</option>
-                                    <option value="wali kelas">Wali Kelas</option>
-                                    <option value="siswa">Siswa</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Password</td>
-                            <td>:</td>
-                            <td><input type="password" name="password" id="log-pass" /></td>
-                        </tr>
-                    </table>
+                        <input type="username" name="username" id="log-user" placeholder="Username ex: User123"/>
+                        <br>
+                            <select name="Role" id="log-role">
+                                <option value="null">Pilih Role</option>
+                                <option value="petugas">Petugas Bendahara</option>
+                                <option value="wali kelas">Wali Kelas</option>
+                                <option value="siswa">Siswa</option>
+                            </select>
+                        <br>
+                        <input type="password" name="password" id="log-pass" placeholder="Password ex: min 8 karakter"/>
+                        <br>
                     <input type="submit" name="Login" value="Login" onclick="getLogin()" />
                     <p>Jika belum memiliki akun silahkan <a href="register.html">Daftar disini!</a></p>
                 </form>
