@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <div class="rowFrom">
-        <div class="colFrom">
-            <form action="" method="get">
-                <table>
-                    <tr>
-                        <td>Username</td>
-                        <td>:</td>
-                        <td><input type="username" name="username" id="log-user"></td>
-                    </tr>
-                    <tr>
-                        <td>Role</td>
-                        <td>:</td>
-                        <td>
-                            <select name="Role" id="log-role">
-                                <option value="null">Pilih Role</option>
-                                <option value="petugas">Petugas Bendahara</option>
-                                <option value="wali kelas">Wali Kelas</option>
-                                <option value="siswa">Siswa</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td>:</td>
-                        <td><input type="password" name="password" id="log-pass"></td>
-                    </tr>
-                </table>
-                <input type="submit" name="Login" value="Login" onclick="getLogin()">
-                <p>Jika belum memiliki akun silahkan <a href="register.html">Daftar disini!</a></p>
-            </form>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="scripts/script.js"></script>
+        <title>Login</title>
+    </head>
+    <body>
+        <div class="rowFrom">
+            <div class="colFrom">
+                <form action="" method="get">
+                    <table>
+                        <tr>
+                            <td>Username</td>
+                            <td>:</td>
+                            <td><input type="username" name="username" id="log-user" /></td>
+                        </tr>
+                        <tr>
+                            <td>Role</td>
+                            <td>:</td>
+                            <td>
+                                <select name="Role" id="log-role">
+                                    <option value="null">Pilih Role</option>
+                                    <option value="petugas">Petugas Bendahara</option>
+                                    <option value="wali kelas">Wali Kelas</option>
+                                    <option value="siswa">Siswa</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Password</td>
+                            <td>:</td>
+                            <td><input type="password" name="password" id="log-pass" /></td>
+                        </tr>
+                    </table>
+                    <input type="submit" name="Login" value="Login" onclick="getLogin()" />
+                    <p>Jika belum memiliki akun silahkan <a href="register.html">Daftar disini!</a></p>
+                </form>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
