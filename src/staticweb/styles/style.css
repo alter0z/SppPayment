@@ -26,6 +26,11 @@ body, html {
     margin-top: 100px;
     margin-bottom: 100px;
 }
+.colfrom{
+    width: 100%;
+    margin-left: 100px;
+    margin-right: 100px;
+}
 
 .input[type= "text"] {
     font-family: ProductSansRegular;
@@ -38,6 +43,21 @@ body, html {
     border-radius: 16px;
     border: none;
     outline: none;
+
+}
+
+#nama {
+
+    font-family: ProductSansRegular;
+    background: #ededed;
+    height: 50px;
+    width: 200px;
+    padding-left: 20px;
+    font-size: 15px;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    margin-right: 10px;
 
 }
 
