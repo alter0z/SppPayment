@@ -11,60 +11,33 @@
     <div class="rowAdd">
         <div class="colAdd">
             <form action="showSiswa.html" method="post">
-                <table>
-                    <tr>
-                        <td>NIS</td>
-                        <td>:</td>
-                        <td><input type="text" name="NIS" id="add-nis" maxlength="40"></td>
-                    </tr>
-                    <tr>
-                        <td>Nama Siswa</td>
-                        <td>:</td>
-                        <td><input type="text" name="NamaSiswa" id="add-ns"></td>
-                    </tr>
-                    <tr>
-                        <td>Kelas</td>
-                        <td>:</td>
-                        <td>
-                            <select name="Kelas" id="add-class">
-                                <option value="null">Pilih Kelas</option>
-                                <option value="10-A">10-A</option>
-                                <option value="10-B">10-B</option>
-                                <option value="10-C">10-C</option>
-                                <option value="10-D">10-D</option>
-                                <option value="10-E">10-E</option>
-                                <option value="10-F">10-F</option>
-                                <option value="11-A">11-A</option>
-                                <option value="11-B">11-B</option>
-                                <option value="11-C">11-C</option>
-                                <option value="11-D">11-D</option>
-                                <option value="11-E">11-E</option>
-                                <option value="11-F">11-F</option>
-                                <option value="12-A">12-A</option>
-                                <option value="12-B">12-B</option>
-                                <option value="12-C">12-C</option>
-                                <option value="12-D">12-D</option>
-                                <option value="12-E">12-E</option>
-                                <option value="12-F">12-F</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tahun Ajaran</td>
-                        <td>:</td>
-                        <td><input type="text" name="tahunAjaran" value="2021-2022" id="add-ta" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>Biaya SPP</td>
-                        <td>:</td>
-                        <td><input type="text" name="biayaSpp" value="250000" id="add-spp" readonly></td>
-                    </tr>
-                    <tr>
-                        <td>Jatuh Tempo</td>
-                        <td>:</td>
-                        <td><input type="text" name="jatuhTempo" value="2022-03-30" id="add-jt" readonly></td>
-                    </tr>
-                </table>
+                    <input type="text" name="NIS" id="add-nis" maxlength="40" placeholder="NIS ex: 2212345xxx"><br>
+                    <input type="text" name="NamaSiswa" id="add-ns" placeholder="Nama Siswa ex: Ratna Permata"><br>
+                        <select name="Kelas" id="add-class">
+                            <option value="null">Pilih Kelas</option>
+                            <option value="10-A">10-A</option>
+                            <option value="10-B">10-B</option>
+                            <option value="10-C">10-C</option>
+                            <option value="10-D">10-D</option>
+                            <option value="10-E">10-E</option>
+                            <option value="10-F">10-F</option>
+                            <option value="11-A">11-A</option>
+                            <option value="11-B">11-B</option>
+                            <option value="11-C">11-C</option>
+                            <option value="11-D">11-D</option>
+                            <option value="11-E">11-E</option>
+                            <option value="11-F">11-F</option>
+                            <option value="12-A">12-A</option>
+                            <option value="12-B">12-B</option>
+                            <option value="12-C">12-C</option>
+                            <option value="12-D">12-D</option>
+                            <option value="12-E">12-E</option>
+                            <option value="12-F">12-F</option>
+                        </select>
+                        <br>
+                    <input type="text" name="tahunAjaran" value="2021-2022" id="add-ta" readonly><br>
+                    <input type="text" name="biayaSpp" value="250000" id="add-spp" readonly><br>
+                    <input type="text" name="jatuhTempo" value="2022-03-30" id="add-jt" readonly><br>
                 <input type="submit" name="Simpan" value="Simpan" onclick="addSiswa()">
                 <input type="reset" value="Reset">
             </form>
