@@ -13,21 +13,6 @@ function getRegister() {
     alert('Register berhasil');
 }
 
-// function getRole() {
-//     const role = document.getElementById('reg-role').value;
-//     var val;
-
-//     if (role[0].checked) {
-//         val = role[0].value;
-//     } else if (role[1].checked) {
-//         val = role[1].value;
-//     } else if (role[2].checked) {
-//         val = role[2].value;
-//     }
-
-//     return val;
-// }
-
 // login
 function getLogin() {
     // get data from local storage
@@ -40,4 +25,57 @@ function getLogin() {
     const getPassword = document.getElementById('log-pass').value;
 
     getRole === role && getPassword === password && getUsername === username ? alert('Login berhasil') : alert('username atau password atau role salah');
+}
+
+// add siswa
+function addSiswa() {
+    const nis = document.getElementById('add-nis').value;
+    const name = document.getElementById('add-ns').value;
+    const kelas = document.getElementById('add-class').value;
+    const periode = document.getElementById('add-ta').value;
+    const cost = document.getElementById('add-spp').value;
+    const dueDate = document.getElementById('add-jt').value;
+
+    localStorage.setItem('NIS', nis);
+    localStorage.setItem('SNAME', name);
+    localStorage.setItem('CLASS', kelas);
+    localStorage.setItem('PERIODE', periode);
+    localStorage.setItem('COST', cost);
+    localStorage.setItem('DUEDATE', dueDate);
+
+    alert('data siswa berhasil ditambahkan');
+}
+
+// add wali kelas
+function addWalkas() {
+    const kelas = document.getElementById('add-wclass').value;
+    const name = document.getElementById('add-walkas').value;
+
+    localStorage.setItem('WCLASS', kelas);
+    localStorage.setItem('WNAME', name);
+
+    alert('data siswa berhasil ditambahkan');
+}
+
+// show siswa
+function showSiswa() {
+    document.getElementById('result-nis').innerHTML = localStorage.getItem('NIS');
+    document.getElementById('result-name').innerHTML = localStorage.getItem('SNAME');
+    document.getElementById('result-class').innerHTML = localStorage.getItem('CLASS');
+    document.getElementById('result-ta').innerHTML = localStorage.getItem('PERIODE');
+    document.getElementById('result-spp').innerHTML = localStorage.getItem('COST');
+    document.getElementById('result-jt').innerHTML = localStorage.getItem('DUEDATE');
+}
+
+// show walikelas
+function showWalkas() {
+    document.getElementById('result-wclass').innerHTML = localStorage.getItem('WCLASS');
+    document.getElementById('result-namewk').innerHTML = localStorage.getItem('WNAME');
+}
+
+// show walikelas
+function showUser() {
+    document.getElementById('result-uname').innerHTML = localStorage.getItem('NAME');
+    document.getElementById('result-username').innerHTML = localStorage.getItem('USERNAME');
+    document.getElementById('result-role').innerHTML = localStorage.getItem('ROLE');
 }
