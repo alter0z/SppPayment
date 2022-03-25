@@ -1,0 +1,200 @@
+@font-face {
+    font-family: ProductSansRegular;
+    src: url('font/product_sans_regular.ttf');
+}
+
+@font-face {
+    font-family: ProductSansMedium;
+    src: url('font/product_sans_medium.ttf');
+}
+
+@font-face {
+    font-family: ProductSansBold;
+    src: url('font/product_sans_bold.ttf');
+}
+
+body {
+    background-image: linear-gradient(#4a7fc1, #2196f3);
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    font-family: ProductSansRegular;
+}
+
+.title-form {
+    font-family: ProductSansBold;
+    font-size: 28px;
+    color: #2196f3;
+}
+
+.rowFrom {
+    background-color: #fcfcfc;
+    width: 450px;
+    padding: 20px;
+    margin: 80px auto;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.2);
+}
+
+.colFrom {
+    padding: 10px;
+}
+
+p {
+    font-family: ProductSansBold;
+    position: relative;
+    color: #4f565e;
+    font-size: 14px;
+}
+
+a:link,
+a:visited,
+a:active {
+    color: #2196f3;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+a:focus,
+a:hover,
+a:link:focus,
+a:link:hover,
+a:visited:focus,
+a:visited:hover,
+a:active:focus,
+a:active:hover {
+    color: #329dd5;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+/* input[type='text'] {
+    font-family: ProductSansRegular;
+    background: #e6f2fb;
+    height: 50px;
+    width: 250px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: #e6f2fb;
+    outline: #e6f2fb;
+}
+
+input[type='text']:focus {
+    border-color: #2196f3;
+    border-width: 10px;
+} */
+
+.name-form input {
+    font-family: ProductSansRegular;
+    background: #e6f2fb;
+    height: 50px;
+    width: 350px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    outline: none;
+    border: none;
+}
+
+.role select {
+    font-family: ProductSansRegular;
+    background: #e6f2fb;
+    height: 50px;
+    width: 390px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+}
+
+.user input {
+    font-family: ProductSansRegular;
+    background: #e6f2fb;
+    height: 50px;
+    width: 350px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+.pw input {
+    font-family: ProductSansRegular;
+    background: #e6f2fb;
+    height: 50px;
+    width: 350px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+input[type='submit'] {
+    border: none;
+    display: block;
+    height: 50px;
+    width: 100px;
+    background-color: #2196f3;
+    color: #fff;
+    font-family: ProductSansBold;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 12px;
+}
+/* input[type='reset'] {
+    border: none;
+    display: block;
+    height: 50px;
+    width: 100px;
+    background-color: #3ca9e2;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+} */
+
+input[type='submit']:hover {
+    background-color: #329dd5;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+/* input[type='reset']:hover {
+    background-color: #329dd5;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+} */
+
+#reg {
+    background-color: #eeedf1;
+    color: #8a8b8e;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 0 0 4px 4px;
+}
