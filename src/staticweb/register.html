@@ -5,33 +5,38 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="scripts/script.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link rel="stylesheet" href="styles/style.css"></style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+        <link rel="stylesheet" href="styles/style.css" />
         <title>Register</title>
     </head>
     <body>
         <div class="rowFrom">
             <div class="colFrom">
+                <h1 class="title-form">Membuat Akun</h1>
                 <form action="login.html" method="post">
+                    <div class="name-form">
                         <input type="text" name="nama" id="reg-name" placeholder="Nama ex: Asep Budi" />
-                        <br>
-                        <br>
-                        <div class="role">
-                            <select name="Role" id="reg-role">
-                                <option value="null">Pilih Role</option>
-                                <option value="petugas">Petugas Bendahara</option>
-                                <option value="wali kelas">Wali Kelas</option>
-                                <option value="siswa">Siswa</option>
-                            </select>
-                        </div>
-                            <br>
-                        <input type="text" name="username" id="reg-user" placeholder="Username ex: User123"/><br><br>
-                        <div class="pw">
-                        <input type="password" name="password" id="reg-pass" placeholder="Password"/>
-                        </div>
-                        <br>
+                    </div>
+                    <br />
+                    <div class="role">
+                        <select name="Role" id="reg-role">
+                            <option value="null">Pilih Role</option>
+                            <option value="petugas">Petugas Bendahara</option>
+                            <option value="wali kelas">Wali Kelas</option>
+                            <option value="siswa">Siswa</option>
+                        </select>
+                    </div>
+                    <br />
+                    <div class="user">
+                        <input type="text" name="username" id="reg-user" placeholder="Username ex: User123" />
+                    </div>
+                    <br />
+                    <div class="pw">
+                        <input type="password" name="password" id="reg-pass" placeholder="Password ex: min 8 karakter" />
+                    </div>
+                    <br />
                     <input type="submit" name="Register" value="Register" onclick="getRegister()" />
-                    <input type="reset" value="Reset" />
+                    <p>Jika sudah memiliki akun silahkan <a href="login.html">Login disini!</a></p>
                 </form>
             </div>
         </div>
