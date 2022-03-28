@@ -27,6 +27,13 @@ body {
     color: #2196f3;
 }
 
+.title-about {
+    font-family: ProductSansBold;
+    font-size: 28px;
+    text-align: center;
+    color: #2196f3;
+}
+
 .rowFrom {
     background-color: #fcfcfc;
     width: 450px;
