@@ -238,7 +238,7 @@ input[type='submit']:hover {
 }
 
 .header {
-    margin-top: -410px;
+    margin-top: -8px;
     right: 0;
     left: 0;
     position: fixed;
@@ -247,7 +247,7 @@ input[type='submit']:hover {
     /* z-index: 9999; */
 }
 
-.header .title{
+.header .title {
     font-weight: bold;
     text-align: center;
     color: dodgerblue;
