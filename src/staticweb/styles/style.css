@@ -37,7 +37,21 @@ body {
     box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.2);
 }
 
+.rowShow {
+    background-color: #fcfcfc;
+    width: 750px;
+    padding: 20px;
+    margin: 80px auto;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.2);
+}
+
 .colFrom {
+    padding: 10px;
+}
+
+.colShow {
     padding: 10px;
 }
 
@@ -179,7 +193,7 @@ input[type='submit'] {
 } */
 
 input[type='submit']:hover {
-    background-color: #329dd5;
+    background-color: #127cb6;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
@@ -197,4 +211,79 @@ input[type='submit']:hover {
     width: 100%;
     padding: 10px 0;
     border-radius: 0 0 4px 4px;
+}
+
+.table-page table {
+    border-collapse: collapse;
+    border-radius: 12px;
+    width: 650px;
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.table-page td {
+    text-align: left;
+    padding: 8px;
+}
+
+.table-page tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-page th {
+    padding: 8px;
+    text-align: center;
+    background-color: #2196f3;
+    color: white;
+}
+
+.header {
+    margin-top: -8px;
+    right: 0;
+    left: 0;
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* z-index: 9999; */
+}
+
+.header .title {
+    font-weight: bold;
+    text-align: center;
+    color: dodgerblue;
+}
+
+.title a {
+    text-decoration: none;
+    color: dodgerblue;
+}
+.top-bar {
+    padding: 1px;
+    background-color: white;
+    right: 0;
+    left: 0;
+}
+
+.top-bar ul li {
+    display: inline-block;
+    /*margin-right: 50px;*/
+    padding: 1px;
+    /*margin-left: -40px;*/
+    font-weight: bold;
+}
+
+.top-bar a {
+    text-decoration: none;
+    padding: 10px;
+    color: dodgerblue;
+}
+.top-bar a:hover {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.h a {
+    margin-left: 270px;
 }
