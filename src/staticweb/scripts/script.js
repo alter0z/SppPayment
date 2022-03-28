@@ -35,6 +35,7 @@ function addSiswa() {
     const periode = document.getElementById('add-ta').value;
     const cost = document.getElementById('add-spp').value;
     const dueDate = document.getElementById('add-jt').value;
+    const statues = document.getElementById('add-t').value;
 
     localStorage.setItem('NIS', nis);
     localStorage.setItem('SNAME', name);
@@ -42,6 +43,7 @@ function addSiswa() {
     localStorage.setItem('PERIODE', periode);
     localStorage.setItem('COST', cost);
     localStorage.setItem('DUEDATE', dueDate);
+    localStorage.setItem('STATUES', statues);
 
     alert('data siswa berhasil ditambahkan');
 }
@@ -78,4 +80,15 @@ function showUser() {
     document.getElementById('result-uname').innerHTML = localStorage.getItem('NAME');
     document.getElementById('result-username').innerHTML = localStorage.getItem('USERNAME');
     document.getElementById('result-role').innerHTML = localStorage.getItem('ROLE');
+}
+
+// show transaction
+function showTransaction() {
+    document.getElementById('result-statues').innerHTML = localStorage.getItem('STATUES');
+}
+
+// add transaction
+function addTransaction() {
+    const statues = document.getElementById('update-t').value;
+    localStorage.setItem('STATUES', statues);
 }
