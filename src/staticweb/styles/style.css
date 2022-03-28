@@ -236,3 +236,54 @@ input[type='submit']:hover {
     background-color: #2196f3;
     color: white;
 }
+
+.header {
+    margin-top: -410px;
+    right: 0;
+    left: 0;
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* z-index: 9999; */
+}
+
+.header .title{
+    font-weight: bold;
+    text-align: center;
+    color: dodgerblue;
+}
+
+.title a {
+    text-decoration: none;
+    color: dodgerblue;
+}
+.top-bar {
+    padding: 1px;
+    background-color: white;
+    right: 0;
+    left: 0;
+}
+
+.top-bar ul li {
+    display: inline-block;
+    /*margin-right: 50px;*/
+    padding: 1px;
+    /*margin-left: -40px;*/
+    font-weight: bold;
+}
+
+.top-bar a {
+    text-decoration: none;
+    padding: 10px;
+    color: dodgerblue;
+}
+.top-bar a:hover {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.h a {
+    margin-left: 270px;
+}
