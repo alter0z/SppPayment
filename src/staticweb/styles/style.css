@@ -75,6 +75,7 @@ a:active {
     color: #2196f3;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
+    text-decoration: none;
 }
 a:focus,
 a:hover,
@@ -312,5 +313,4 @@ img {
 .colIndex {
     margin-top: -20px;
     padding: 50px;
-
 }
