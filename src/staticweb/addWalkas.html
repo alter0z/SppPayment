@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css" />
     <script src="scripts/script.js"></script>
     <title>Tambah Wali Kelas</title>
 </head>
@@ -11,6 +12,7 @@
     <div class="rowAdd">
         <div class="colAdd">
             <form action="showWalkas.html" method="post">
+                <div class="kelas-add">
                     <select name="Kelas" id="add-wclass">
                         <option value="null">Pilih Kelas</option>
                         <option value="10-A">10-A</option>
@@ -32,7 +34,9 @@
                         <option value="12-E">12-E</option>
                         <option value="12-F">12-F</option>
                     </select>
+                    </div>
                     <br>
+                    <div class="kelas-add">
                     <select name="namaWalkas" id="add-walkas">
                         <option value="null">Pilih Wali Kelas</option>
                         <option value="Afila">Afila</option>
@@ -54,6 +58,7 @@
                         <option value="Tanjiro">Tanjiro</option>
                         <option value="Nezuko">Nezuko</option>
                     </select>
+                </div>
                     <br>
                 <input type="submit" name="Simpan" value="Simpan" onclick="addWalkas()">
                 <input type="reset" value="Reset">
