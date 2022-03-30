@@ -137,6 +137,20 @@ input[type='text']:focus {
     outline: none;
 }
 
+.input-field span {
+    font-family: ProductSansRegular;
+    background: #e6f2fb;
+    height: 50px;
+    width: 350px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
 .password-input input {
     font-family: ProductSansRegular;
     background: #e6f2fb;
@@ -292,12 +306,12 @@ input[type='submit']:hover {
 .header .title {
     font-weight: bold;
     text-align: center;
-    color: dodgerblue;
+    color: #2196f3;
 }
 
 .title a {
     text-decoration: none;
-    color: dodgerblue;
+    color: #2196f3;
 }
 .top-bar {
     padding: 1px;
@@ -317,11 +331,12 @@ input[type='submit']:hover {
 .top-bar a {
     text-decoration: none;
     padding: 10px;
-    color: dodgerblue;
+    border-radius: 12px;
+    color: #2196f3;
 }
 
 .top-bar a:hover {
-    background-color: dodgerblue;
+    background-color: #2196f3;
     color: white;
     border-radius: 12px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -352,7 +367,7 @@ img {
 
 .rowAdd {
     background-color: #fcfcfc;
-    width: 45%;
+    width: 450px;
     padding: 20px;
     margin: 80px auto;
     text-align: center;
@@ -361,8 +376,7 @@ img {
 }
 
 .colAdd {
-    margin-top: -20px;
-    padding: 50px;
+    padding: 10px;
 }
 
 input[type='reset'] {
