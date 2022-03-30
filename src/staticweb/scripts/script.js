@@ -5,13 +5,8 @@ function getRegister() {
     const username = document.getElementById('reg-user').value;
     const password = document.getElementById('reg-pass').value;
 
-    if (name == '' || role == 'null' || username == '' || password == '') {
-        alert('Data masih kosong!');
-    } else {
-        password.length < 8
-            ? alert('password minimal 8 karakter!')
-            : (localStorage.setItem('NAME', name), localStorage.setItem('ROLE', role), localStorage.setItem('USERNAME', username), localStorage.setItem('PASS', password), alert('Register berhasil'), window.open('login.html'));
-    }
+    // caling function popup
+    getPopupRegister(name, role, username, password);
 }
 
 // login
@@ -25,11 +20,8 @@ function getLogin() {
     const getUsername = document.getElementById('log-user').value;
     const getPassword = document.getElementById('log-pass').value;
 
-    getRole == 'null' || getUsername == '' || getPassword == ''
-        ? alert('Data masih kosong!')
-        : getRole === role && getPassword === password && getUsername === username
-        ? (window.open('index.html'), alert('Login berhasil'))
-        : alert('username atau password atau role salah');
+    // call function popup
+    getPopupLogin(role, getRole, username, getUsername, password, getPassword);
 }
 
 // add siswa
@@ -42,17 +34,8 @@ function addSiswa() {
     const dueDate = document.getElementById('add-jt').value;
     const statues = document.getElementById('add-t').value;
 
-    nis == '' || name == '' || kelas == 'null'
-        ? alert('Data masih kosong!')
-        : (localStorage.setItem('NIS', nis),
-          localStorage.setItem('SNAME', name),
-          localStorage.setItem('CLASS', kelas),
-          localStorage.setItem('PERIODE', periode),
-          localStorage.setItem('COST', cost),
-          localStorage.setItem('DUEDATE', dueDate),
-          localStorage.setItem('STATUES', statues),
-          alert('data siswa berhasil ditambahkan'),
-          window.open('showSiswa.html'));
+    // call function popup
+    getPopupAddSiswa(name, nis, kelas, periode, cost, dueDate, statues);
 }
 
 // get siswa name
@@ -65,7 +48,8 @@ function addWalkas() {
     const kelas = document.getElementById('add-wclass').value;
     const name = document.getElementById('add-walkas').value;
 
-    kelas == 'null' || name == 'null' ? alert('Pilih kelas dan walikelas!') : (localStorage.setItem('WCLASS', kelas), localStorage.setItem('WNAME', name), alert('data walikelas berhasil ditambahkan'), window.open('showWalkas.html'));
+    // call function popup
+    getPopupAddWclass(kelas, name);
 }
 
 // show siswa
@@ -104,10 +88,273 @@ function showTransaction() {
 function addTransaction() {
     const statues = document.getElementById('update-t').value;
 
-    statues == 'null' ? alert('Pilih status!') : (localStorage.setItem('STATUES', statues), alert('Status berhasil diupdate!'), window.open('transaksi.html'));
+    // calling function popup
+    getPopupAddTransaction(statues);
 }
 
 // clear data
 function clearData() {
     confirm('Anda yakin akan menghapus data?') ? (localStorage.clear(), alert('Data berhasil dihapus!')) : alert('Data gagal dihapus!');
+}
+
+// popup
+function getPopupAddSiswa(name, nis, kelas, periode, cost, dueDate, statues) {
+    // get id / reference
+    var modal = document.getElementById('mModal');
+    var spans = document.getElementsByClassName('close')[0];
+    var modalContent = document.getElementById('modal-contents');
+
+    // function clearing input field
+    function clearInput() {
+        document.getElementById('add-nis').value = '';
+        document.getElementById('add-ns').value = '';
+        document.getElementById('add-class').value = null;
+    }
+
+    // set display popup (visible)
+    modal.style.display = 'block';
+
+    // when popup closed
+    spans.onclick = function () {
+        // set popup display (invisible)
+        modal.style.display = 'none';
+
+        // clearing input field when popup closed
+        clearInput();
+    };
+
+    // check input field
+    nis == '' || name == '' || kelas == 'null'
+        ? ((document.getElementById('message').innerHTML = 'Data Masih Kosong!'), (modalContent.style.backgroundColor = '#ee4266'))
+        : (localStorage.setItem('NIS', nis),
+          localStorage.setItem('SNAME', name),
+          localStorage.setItem('CLASS', kelas),
+          localStorage.setItem('PERIODE', periode),
+          localStorage.setItem('COST', cost),
+          localStorage.setItem('DUEDATE', dueDate),
+          localStorage.setItem('STATUES', statues),
+          (document.getElementById('message').innerHTML = 'Data Berhasil ditambahkan!'),
+          (modalContent.style.backgroundColor = '#0ead69')) /*,
+          window.open('showSiswa.html')*/;
+
+    // when anywhere click
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            // set popup display (invisible)
+            modal.style.display = 'none';
+
+            // clearing input field when popup closed
+            clearInput();
+        }
+    };
+}
+
+function getPopupAddTransaction(statues) {
+    // get id / reference
+    var modal = document.getElementById('mModal');
+    var spans = document.getElementsByClassName('close')[0];
+    var modalContent = document.getElementById('modal-contents');
+
+    // function clearing input field
+    function clearInput() {
+        document.getElementById('update-t').value = null;
+    }
+
+    // set display popup (visible)
+    modal.style.display = 'block';
+
+    // when popup closed
+    spans.onclick = function () {
+        // set popup display (invisible)
+        modal.style.display = 'none';
+
+        // clearing input field when popup closed
+        clearInput();
+    };
+
+    // check input field
+    statues == 'null'
+        ? ((document.getElementById('message').innerHTML = 'Pilih Status!'), (modalContent.style.backgroundColor = '#ee4266'))
+        : (localStorage.setItem('STATUES', statues), (document.getElementById('message').innerHTML = 'Status berhasil diupdate!'), (modalContent.style.backgroundColor = '#0ead69')) /*,
+          window.open('showSiswa.html')*/;
+
+    // when anywhere click
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            // set popup display (invisible)
+            modal.style.display = 'none';
+
+            // clearing input field when popup closed
+            clearInput();
+        }
+    };
+}
+
+function getPopupAddWclass(kelas, name) {
+    // get id / reference
+    var modal = document.getElementById('mModal');
+    var spans = document.getElementsByClassName('close')[0];
+    var modalContent = document.getElementById('modal-contents');
+
+    // function clearing input field
+    function clearInput() {
+        document.getElementById('add-wclass').value = null;
+        document.getElementById('add-walkas').value = null;
+    }
+
+    // set display popup (visible)
+    modal.style.display = 'block';
+
+    // when popup closed
+    spans.onclick = function () {
+        // set popup display (invisible)
+        modal.style.display = 'none';
+
+        // clearing input field when popup closed
+        clearInput();
+    };
+
+    // check input field
+    kelas == 'null' || name == 'null'
+        ? ((document.getElementById('message').innerHTML = 'Pilih kelas dan wali kelas!'), (modalContent.style.backgroundColor = '#ee4266'))
+        : (localStorage.setItem('WCLASS', kelas), localStorage.setItem('WNAME', name), (document.getElementById('message').innerHTML = 'Data walikelas berhasil ditambahkan!'), (modalContent.style.backgroundColor = '#0ead69')) /*,
+          window.open('showSiswa.html')*/;
+
+    // when anywhere click
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            // set popup display (invisible)
+            modal.style.display = 'none';
+
+            // clearing input field when popup closed
+            clearInput();
+        }
+    };
+}
+
+function getPopupRegister(name, role, username, password) {
+    // get id / reference
+    var modal = document.getElementById('mModal');
+    var spans = document.getElementsByClassName('close')[0];
+    var modalContent = document.getElementById('modal-contents');
+
+    // function clearing input field
+    function clearInput() {
+        document.getElementById('reg-name').value = '';
+        document.getElementById('reg-role').value = null;
+        document.getElementById('reg-user').value = '';
+        document.getElementById('reg-pass').value = '';
+    }
+
+    // set display popup (visible)
+    modal.style.display = 'block';
+
+    // when popup closed
+    spans.onclick = function () {
+        // set popup display (invisible)
+        modal.style.display = 'none';
+
+        // clearing input field when popup closed
+        clearInput();
+
+        // redirrect to login
+        if (isSucces) window.open('login.html');
+    };
+
+    // bool check success event
+    var isSucces = false;
+
+    // check input field
+    name == '' || role == 'null' || username == '' || password == ''
+        ? ((document.getElementById('message').innerHTML = 'Input masih kosong!'), (modalContent.style.backgroundColor = '#ee4266'))
+        : password.length < 8
+        ? ((document.getElementById('message').innerHTML = 'Password minimal 8 karakter!'), (modalContent.style.backgroundColor = '#ffd23f'))
+        : (localStorage.setItem('NAME', name),
+          localStorage.setItem('ROLE', role),
+          localStorage.setItem('USERNAME', username),
+          localStorage.setItem('PASS', password),
+          (document.getElementById('message').innerHTML = 'Daftar Berhasil!'),
+          (modalContent.style.backgroundColor = '#0ead69'),
+          (isSucces = true));
+
+    // when anywhere click
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            // set popup display (invisible)
+            modal.style.display = 'none';
+
+            // clearing input field when popup closed
+            clearInput();
+
+            // redirrect to login
+            if (isSucces) window.open('login.html');
+        }
+    };
+}
+
+function getPopupLogin(role, getRole, username, getUsername, password, getPassword) {
+    // get id / reference
+    var modal = document.getElementById('mModal');
+    var spans = document.getElementsByClassName('close')[0];
+    var modalContent = document.getElementById('modal-contents');
+
+    // function clearing input field
+    function clearInput() {
+        document.getElementById('log-role').value = null;
+        document.getElementById('log-user').value = '';
+        document.getElementById('log-pass').value = '';
+    }
+
+    // set display popup (visible)
+    modal.style.display = 'block';
+
+    // when popup closed
+    spans.onclick = function () {
+        // set popup display (invisible)
+        modal.style.display = 'none';
+
+        // clearing input field when popup closed
+        clearInput();
+
+        // redirrect to login
+        if (isSucces) window.open('index.html');
+    };
+
+    // bool check success event
+    var isSucces = false;
+
+    // check input field
+    role == 'null' || username == '' || password == ''
+        ? ((document.getElementById('message').innerHTML = 'Input masih kosong!'), (modalContent.style.backgroundColor = '#ee4266'))
+        : (getRole === role && getPassword === password && getUsername === username
+              ? ((document.getElementById('message').innerHTML = 'Login Berhasil!'), (modalContent.style.backgroundColor = '#0ead69'), (isSucces = true))
+              : (document.getElementById('message').innerHTML = 'username atau password atau role salah!'),
+          (modalContent.style.backgroundColor = '#ee4266'));
+
+    // when anywhere click
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            // set popup display (invisible)
+            modal.style.display = 'none';
+
+            // clearing input field when popup closed
+            clearInput();
+
+            // redirrect to login
+            if (isSucces) window.open('index.html');
+        }
+    };
+}
+
+// popup image
+function getPopUpimg() {
+    document.querySelectorAll('.colIndex img').forEach((image) => {
+        image.onclick = () => {
+            document.querySelector('.popup-image').style.display = 'block';
+            document.querySelector('.popup-image img').src = image.getAttribute('src');
+        };
+    });
+    document.querySelector('.popup-image span').onclick = () => {
+        document.querySelector('.popup-image').style.display = 'none';
+    };
 }
