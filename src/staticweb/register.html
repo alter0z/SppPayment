@@ -9,6 +9,14 @@
         <title>Register</title>
     </head>
     <body>
+        <br /><br /><br /><br /><br />
+        <div id="mModal" class="modal">
+            <div id="modal-contents" class="modal-content">
+                <span class="close">&times;</span>
+                <span id="message"></span>
+            </div>
+        </div>
+        <br /><br />
         <div class="rowFrom">
             <div class="colFrom">
                 <h1 class="title-form">Membuat Akun</h1>
@@ -34,10 +42,17 @@
                         <input type="password" name="password" id="reg-pass" placeholder="Password ex: min 8 karakter" />
                     </div>
                     <br />
-                    <input type="submit" name="Register" value="Register" onclick="getRegister()" />
-                    <p>Jika sudah memiliki akun silahkan <a href="login.html">Login disini!</a></p>
                 </form>
+                <input type="submit" value="Register" onclick="getRegister()" />
+                <p>Jika sudah memiliki akun silahkan <a href="login.html">Login disini!</a></p>
             </div>
+        </div>
+        <br /><br /><br /><br />
+        <div class="foot-bar">
+            <footer>
+                <p>Author: ©Shirohaku Dev Team-2022</p>
+                <p>Contact us: <a href="mailto:shirohakudteam@gmail.com">shirohakudteam@gmail.com</a></p>
+            </footer>
         </div>
     </body>
 </html>

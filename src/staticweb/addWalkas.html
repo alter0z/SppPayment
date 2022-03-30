@@ -22,10 +22,17 @@
                 </ul>
             </div>
         </div>
-        <br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <div id="mModal" class="modal">
+            <div id="modal-contents" class="modal-content">
+                <span class="close">&times;</span>
+                <span id="message"></span>
+            </div>
+        </div>
+        <br /><br />
         <div class="rowAdd">
             <div class="colAdd">
-                <form action="" method="post">
+                <form method="post">
                     <div class="drop-down">
                         <select name="Kelas" id="add-wclass">
                             <option value="null">Pilih Kelas</option>
@@ -74,10 +81,16 @@
                         </select>
                     </div>
                     <br />
-                    <input type="submit" name="Simpan" value="Simpan" onclick="addWalkas()" />
-                    <input type="reset" value="Reset" />
                 </form>
+                <input type="submit" name="Simpan" value="Simpan" onclick="addWalkas()" />
             </div>
+        </div>
+        <br /><br /><br /><br />
+        <div class="foot-bar">
+            <footer>
+                <p>Author: ©Shirohaku Dev Team-2022</p>
+                <p>Contact us: <a href="mailto:shirohakudteam@gmail.com">shirohakudteam@gmail.com</a></p>
+            </footer>
         </div>
     </body>
 </html>
