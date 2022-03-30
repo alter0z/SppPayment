@@ -27,6 +27,13 @@ body {
     color: #2196f3;
 }
 
+.title-about {
+    font-family: ProductSansBold;
+    font-size: 28px;
+    text-align: center;
+    color: #2196f3;
+}
+
 .rowFrom {
     background-color: #fcfcfc;
     width: 450px;
@@ -68,6 +75,7 @@ a:active {
     color: #2196f3;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
+    text-decoration: none;
 }
 a:focus,
 a:hover,
@@ -101,21 +109,7 @@ input[type='text']:focus {
     border-width: 10px;
 } */
 
-.name-form input {
-    font-family: ProductSansRegular;
-    background: #e6f2fb;
-    height: 50px;
-    width: 350px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 12px;
-    outline: none;
-    border: none;
-}
-
-.role select {
+.drop-down select {
     font-family: ProductSansRegular;
     background: #e6f2fb;
     height: 50px;
@@ -129,7 +123,7 @@ input[type='text']:focus {
     border-radius: 12px;
 }
 
-.user input {
+.input-field input {
     font-family: ProductSansRegular;
     background: #e6f2fb;
     height: 50px;
@@ -142,7 +136,22 @@ input[type='text']:focus {
     border: none;
     outline: none;
 }
-.pw input {
+
+.input-field span {
+    font-family: ProductSansRegular;
+    background: #e6f2fb;
+    height: 50px;
+    width: 350px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+.password-input input {
     font-family: ProductSansRegular;
     background: #e6f2fb;
     height: 50px;
@@ -160,19 +169,18 @@ input[type='submit'] {
     border: none;
     display: block;
     height: 50px;
-    width: 100px;
+    width: 170px;
     background-color: #2196f3;
     color: #fff;
     font-family: ProductSansBold;
     cursor: pointer;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
     font-size: 18px;
     position: relative;
     display: inline-block;
     cursor: pointer;
     text-align: center;
     border-radius: 12px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 /* input[type='reset'] {
     border: none;
@@ -218,10 +226,36 @@ input[type='submit']:hover {
     border-radius: 12px;
     width: 650px;
     margin: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 12px 12px 12px rgba(65, 64, 64, 0.2);
+}
+
+.table-w table {
+    border-collapse: collapse;
+    border-radius: 12px;
+    width: 400px;
+    margin: auto;
+    box-shadow: 12px 12px 12px rgba(65, 64, 64, 0.2);
+}
+
+.table-u table {
+    border-collapse: collapse;
+    border-radius: 12px;
+    width: 400px;
+    margin: auto;
+    box-shadow: 12px 12px 12px rgba(65, 64, 64, 0.2);
 }
 
 .table-page td {
+    text-align: left;
+    padding: 8px;
+}
+
+.table-w td {
+    text-align: left;
+    padding: 8px;
+}
+
+.table-u td {
     text-align: left;
     padding: 8px;
 }
@@ -230,7 +264,29 @@ input[type='submit']:hover {
     background-color: #f2f2f2;
 }
 
+.table-w tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-u tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
 .table-page th {
+    padding: 8px;
+    text-align: center;
+    background-color: #2196f3;
+    color: white;
+}
+
+.table-w th {
+    padding: 8px;
+    text-align: center;
+    background-color: #2196f3;
+    color: white;
+}
+
+.table-u th {
     padding: 8px;
     text-align: center;
     background-color: #2196f3;
@@ -250,12 +306,12 @@ input[type='submit']:hover {
 .header .title {
     font-weight: bold;
     text-align: center;
-    color: dodgerblue;
+    color: #2196f3;
 }
 
 .title a {
     text-decoration: none;
-    color: dodgerblue;
+    color: #2196f3;
 }
 .top-bar {
     padding: 1px;
@@ -275,15 +331,73 @@ input[type='submit']:hover {
 .top-bar a {
     text-decoration: none;
     padding: 10px;
-    color: dodgerblue;
+    border-radius: 12px;
+    color: #2196f3;
 }
+
 .top-bar a:hover {
-    background-color: dodgerblue;
+    background-color: #2196f3;
     color: white;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .h a {
     margin-left: 270px;
+}
+
+.rowIndex {
+    background-color: #fcfcfc;
+    width: 75%;
+    padding: 20px;
+    margin: 80px auto;
+    border-radius: 12px;
+    box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.2);
+}
+
+img {
+    margin-right: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.colIndex {
+    margin-top: -20px;
+    padding: 50px;
+}
+
+.rowAdd {
+    background-color: #fcfcfc;
+    width: 450px;
+    padding: 20px;
+    margin: 80px auto;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 30px 30px 10px rgba(0, 0, 0, 0.2);
+}
+
+.colAdd {
+    padding: 10px;
+}
+
+input[type='reset'] {
+    border: none;
+    display: block;
+    height: 50px;
+    width: 100px;
+    background-color: grey;
+    color: #fff;
+    font-family: ProductSansBold;
+    cursor: pointer;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 12px;
+}
+
+input[type='reset']:hover {
+    background-color: darkgray;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }

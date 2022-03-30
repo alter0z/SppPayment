@@ -5,12 +5,13 @@ function getRegister() {
     const username = document.getElementById('reg-user').value;
     const password = document.getElementById('reg-pass').value;
 
-    localStorage.setItem('NAME', name);
-    localStorage.setItem('ROLE', role);
-    localStorage.setItem('USERNAME', username);
-    localStorage.setItem('PASS', password);
-
-    alert('Register berhasil');
+    if (name == '' || role == 'null' || username == '' || password == '') {
+        alert('Data masih kosong!');
+    } else {
+        password.length < 8
+            ? alert('password minimal 8 karakter!')
+            : (localStorage.setItem('NAME', name), localStorage.setItem('ROLE', role), localStorage.setItem('USERNAME', username), localStorage.setItem('PASS', password), alert('Register berhasil'), window.open('login.html'));
+    }
 }
 
 // login
@@ -24,7 +25,11 @@ function getLogin() {
     const getUsername = document.getElementById('log-user').value;
     const getPassword = document.getElementById('log-pass').value;
 
-    getRole === role && getPassword === password && getUsername === username ? alert('Login berhasil') : alert('username atau password atau role salah');
+    getRole == 'null' || getUsername == '' || getPassword == ''
+        ? alert('Data masih kosong!')
+        : getRole === role && getPassword === password && getUsername === username
+        ? (window.open('index.html'), alert('Login berhasil'))
+        : alert('username atau password atau role salah');
 }
 
 // add siswa
@@ -37,15 +42,22 @@ function addSiswa() {
     const dueDate = document.getElementById('add-jt').value;
     const statues = document.getElementById('add-t').value;
 
-    localStorage.setItem('NIS', nis);
-    localStorage.setItem('SNAME', name);
-    localStorage.setItem('CLASS', kelas);
-    localStorage.setItem('PERIODE', periode);
-    localStorage.setItem('COST', cost);
-    localStorage.setItem('DUEDATE', dueDate);
-    localStorage.setItem('STATUES', statues);
+    nis == '' || name == '' || kelas == 'null'
+        ? alert('Data masih kosong!')
+        : (localStorage.setItem('NIS', nis),
+          localStorage.setItem('SNAME', name),
+          localStorage.setItem('CLASS', kelas),
+          localStorage.setItem('PERIODE', periode),
+          localStorage.setItem('COST', cost),
+          localStorage.setItem('DUEDATE', dueDate),
+          localStorage.setItem('STATUES', statues),
+          alert('data siswa berhasil ditambahkan'),
+          window.open('showSiswa.html'));
+}
 
-    alert('data siswa berhasil ditambahkan');
+// get siswa name
+function getName() {
+    return localStorage.getItem('SNAME');
 }
 
 // add wali kelas
@@ -53,10 +65,7 @@ function addWalkas() {
     const kelas = document.getElementById('add-wclass').value;
     const name = document.getElementById('add-walkas').value;
 
-    localStorage.setItem('WCLASS', kelas);
-    localStorage.setItem('WNAME', name);
-
-    alert('data siswa berhasil ditambahkan');
+    kelas == 'null' || name == 'null' ? alert('Pilih kelas dan walikelas!') : (localStorage.setItem('WCLASS', kelas), localStorage.setItem('WNAME', name), alert('data walikelas berhasil ditambahkan'), window.open('showWalkas.html'));
 }
 
 // show siswa
@@ -85,10 +94,20 @@ function showUser() {
 // show transaction
 function showTransaction() {
     document.getElementById('result-statues').innerHTML = localStorage.getItem('STATUES');
+    document.getElementById('result-nis').innerHTML = localStorage.getItem('NIS');
+    document.getElementById('result-name').innerHTML = localStorage.getItem('SNAME');
+    document.getElementById('result-class').innerHTML = localStorage.getItem('CLASS');
+    document.getElementById('result-namewk').innerHTML = localStorage.getItem('WNAME');
 }
 
 // add transaction
 function addTransaction() {
     const statues = document.getElementById('update-t').value;
-    localStorage.setItem('STATUES', statues);
+
+    statues == 'null' ? alert('Pilih status!') : (localStorage.setItem('STATUES', statues), alert('Status berhasil diupdate!'), window.open('transaksi.html'));
+}
+
+// clear data
+function clearData() {
+    confirm('Anda yakin akan menghapus data?') ? (localStorage.clear(), alert('Data berhasil dihapus!')) : alert('Data gagal dihapus!');
 }
