@@ -1,10 +1,8 @@
 <?php
-session_start();
-if(!isset($_SESSION['login'])){
-	header('location:login.php');
-}
-
-include "koneksi.php";
+	session_start();
+	if(!isset($_SESSION['login'])){
+		header('location:auth/login.php');
+	}
 ?>
 
 <!DOCTYPE html>
@@ -21,5 +19,5 @@ include "koneksi.php";
 <a href="tampil_siswa.php">Data Siswa</a> |
 <a href="transaksi.php">Transaksi</a> |
 <a href="laporan.php">Laporan</a> |
-<a href="logout.php">Logout</a>
+<a href="auth/logout.php">Logout</a>
 <hr/>
