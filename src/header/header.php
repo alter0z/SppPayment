@@ -1,10 +1,8 @@
 <?php
-session_start();
-if(!isset($_SESSION['login'])){
-	header('location:login.php');
-}
-
-include "koneksi.php";
+	session_start();
+	if(!isset($_SESSION['login'])){
+		header('location:auth/login.php');
+	}
 ?>
 
 <!DOCTYPE html>
@@ -15,11 +13,10 @@ include "koneksi.php";
 <body>
 <h3>Aplikasi Pembayaran SPP</h3>
 <hr/>
-<a href="tampil_admin.php">Data Admin</a> |
-<a href="tampil_guru.php">Data Guru</a> |
-<a href="tampil_walikelas.php">Data Wali Kelas</a> |
-<a href="tampil_siswa.php">Data Siswa</a> |
+<a href="../show/showdatauser.php">Data User</a> |
+<a href="../show/showdatawclass.php">Data Wali Kelas</a> |
+<a href="../show/showdatastudent.php">Data Siswa</a> |
+<a href="../show/showdataspp.php">Data SPP</a> |
 <a href="transaksi.php">Transaksi</a> |
-<a href="laporan.php">Laporan</a> |
-<a href="logout.php">Logout</a>
+<a href="../auth/logout.php">Logout</a>
 <hr/>

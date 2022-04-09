@@ -4,10 +4,14 @@
 	<title>Login Aplikasi Pembayaran SPP</title>
 </head>
 <body>
-	<h3>Silahkan Login Menggunakan Username dan Password Anda</h3>
+	<h3>Tambah Data User</h3>
 	<hr/>
 	<form method="post" action="">
 		<table>
+      <tr>
+				<td>Fullname</td>
+				<td><input type="text" name="fullname" /></td>
+			</tr>
 			<tr>
 				<td>Username</td>
 				<td><input type="text" name="username" /></td>
@@ -26,7 +30,7 @@
 							$getRole = mysqli_query($conn, "SELECT * from roles");
 							while($data = mysqli_fetch_array($getRole)){
 						?>
-								<option value="<?php echo $data['role']; ?>"><?php echo $data['role']; ?></option>
+							<option value="<?php echo $data['role']; ?>"><?php echo $data['role']; ?></option>
 						<?php
 							}
 						?>
@@ -39,6 +43,6 @@
 			</tr>
 		</table>
 	</form>
-	<?php include "../functions/get_login.php"; ?>
+	<?php include "../functions/get_add_user.php"; ?>
 	</body>
 </html>

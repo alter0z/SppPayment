@@ -22,6 +22,11 @@ function getLogin() {
 
     // call function popup
     getPopupLogin(role, getRole, username, getUsername, password, getPassword);
+    // var modal = document.getElementById('mModal');
+    // var modalContent = document.getElementById('modal-contents');
+
+    // modal.style.display = 'block';
+    // modalContent.style.backgroundColor = '#0ead69';
 }
 
 // add siswa
@@ -324,12 +329,26 @@ function getPopupLogin(role, getRole, username, getUsername, password, getPasswo
     var isSucces = false;
 
     // check input field
-    role == 'null' || username == '' || password == ''
-        ? ((document.getElementById('message').innerHTML = 'Input masih kosong!'), (modalContent.style.backgroundColor = '#ee4266'))
-        : (getRole === role && getPassword === password && getUsername === username
-              ? ((document.getElementById('message').innerHTML = 'Login Berhasil!'), (modalContent.style.backgroundColor = '#0ead69'), (isSucces = true))
-              : (document.getElementById('message').innerHTML = 'username atau password atau role salah!'),
-          (modalContent.style.backgroundColor = '#ee4266'));
+    // role == 'null' || username == '' || password == ''
+    //     ? ((document.getElementById('message').innerHTML = 'Input masih kosong!'), (modalContent.style.backgroundColor = '#ee4266'))
+    //     : getRole === role && getPassword === password && getUsername === username
+    //     ? ((document.getElementById('message').innerHTML = 'Login Berhasil!'), (modalContent.style.backgroundColor = '#0ead69'), (isSucces = true))
+    //     : (document.getElementById('message').innerHTML = 'username atau password atau role salah!'),
+    //     (modalContent.style.backgroundColor = '#ee4266');
+
+    if (role == 'null' || username == '' || password == '') {
+        document.getElementById('message').innerHTML = 'Input masih kosong!';
+        modalContent.style.backgroundColor = '#ee4266';
+    } else {
+        if (getRole === role && getPassword === password && getUsername === username) {
+            document.getElementById('message').innerHTML = 'Login Berhasil!';
+            modalContent.style.backgroundColor = '#0ead69';
+            isSucces = true;
+        } else {
+            document.getElementById('message').innerHTML = 'username atau password atau role salah!';
+            modalContent.style.backgroundColor = '#ee4266';
+        }
+    }
 
     // when anywhere click
     window.onclick = function (event) {

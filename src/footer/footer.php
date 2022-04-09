@@ -1,4 +1,4 @@
 <hr/>
-<i>Dibuat Oleh : Luruilmu.com Tahun 2017</i>
+<i>Dibuat Oleh : Afila Ansori & Muhammad Bagas</i>
 </body>
 </html>
