@@ -22,8 +22,8 @@
 				<td>$data[username]</td>
 				<td>$data[role]</td>
 				<td>
-					<a href='edit_guru.php?username=$data[username]'>Edit</a> /
-					<a href='hapus_guru.php?username=$data[username]'>Hapus</a>
+					<a href='../edit/edituser.php?username=$data[username]'>Edit</a> /
+					<a href='../delete/deleteuser.php?username=$data[username]'>Hapus</a>
 				</td>
 			</tr>";
 			$no++;

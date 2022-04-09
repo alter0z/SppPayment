@@ -1,7 +1,7 @@
 <?php include "../header/header.php"; ?>
 
 <h3>Data Kelas dan Wali Kelas</h3>
-<a href="tambah_walikelas.php">Tambah Data</a>
+<a href="../add/addwclass.php">Tambah Data</a>
 <table border="1">
 	<tr>
 		<th>No.</th>
@@ -19,8 +19,8 @@
 			<td>$data[class]</td>
 			<td>$data[fullname]</td>
 			<td>
-				<a href='edit_walikelas.php?class=$data[class]'>Edit</a> / 
-				<a href='hapus_walikelas.php?class=$data[class]'>Hapus</a>
+				<a href='../edit/editwclass.php?class=$data[class]'>Edit</a> / 
+				<a href='../delete/deletewclass.php?class=$data[class]'>Hapus</a>
 			</td>
 		</tr>";
 		$no++;

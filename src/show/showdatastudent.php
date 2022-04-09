@@ -16,6 +16,7 @@
 	<?php 
 		include "../connection/connection.php";
 		$getData = mysqli_query($conn,"SELECT a.*, b.fullname FROM student as a inner join wclass as b on a.class = b.class order by class asc");
+
 		$no=1;
 		while($data = mysqli_fetch_array($getData)){
 			echo "<tr>
@@ -26,8 +27,8 @@
 				<td>$data[fullname]</td>
 				<td>$data[periode]</td>
 				<td>
-					<a href='edit_siswa.php?nis=$data[nis]'>Edit</a> /
-					<a href='hapus_siswa.php?nis=$data[nis]'>Hapus</a>
+					<a href='../edit/editstudent.php?nis=$data[nis]'>Edit</a> /
+					<a href='../delete/deletestudent.php?nis=$data[nis]'>Hapus</a>
 				</td>
 			</tr>";
 			$no++;

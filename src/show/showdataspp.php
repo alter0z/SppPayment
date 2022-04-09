@@ -11,15 +11,14 @@
 		<th>Tahun Ajaran</th>
 		<th>Biaya</th>
 		<th>Jatuh Tempo</th>
-		<th>Act</th>
 	</tr>
 
 	<?php 
 		include "../connection/connection.php";
-		$getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class order by a.student_name asc");
+		$getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) order by a.student_name asc");
 		$no=1;
 		while ($data = mysqli_fetch_array($getData)) {
-			$date = date('D, M Y',strtotime($data['duedate']));
+			$date = date('D, d M Y',strtotime($data['duedate']));
 			echo "<tr>
 				<td>$no</td>
 				<td>$data[nis]</td>
@@ -29,10 +28,6 @@
 				<td>$data[periode]</td>
 				<td>$data[spp_cost]</td>
 				<td>$date</td>
-				<td>
-					<a href='edit_siswa.php?nis=$data[nis]'>Edit</a> /
-					<a href='hapus_siswa.php?nis=$data[nis]'>Hapus</a>
-				</td>
 			</tr>";
 			$no++;
 		}

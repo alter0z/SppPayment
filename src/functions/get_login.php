@@ -20,7 +20,7 @@
 					$_SESSION['username'] = $username;
 					$_SESSION['role'] = $role;
 
-					header('location:../admin.php');
+					header('location:../index/admin.php');
 				}
 			} else {
 				echo "Username dan Password anda Salah!!!";

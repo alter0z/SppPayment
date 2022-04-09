@@ -31,7 +31,7 @@
 				// 				values('$idsiswa','$jatuhtempo','$bulan','$biaya')");
 				mysqli_query($conn, "INSERT into spp values ('$nis','$duedate','$cost','$status')");
 				header('location:../show/showdatastudent.php');
-				}
 			}
 		}
+	}
 ?>

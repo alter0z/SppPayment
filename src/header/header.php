@@ -18,5 +18,5 @@
 <a href="../show/showdatastudent.php">Data Siswa</a> |
 <a href="../show/showdataspp.php">Data SPP</a> |
 <a href="transaksi.php">Transaksi</a> |
-<a href="auth/logout.php">Logout</a>
+<a href="../auth/logout.php">Logout</a>
 <hr/>
