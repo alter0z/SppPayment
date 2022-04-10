@@ -20,13 +20,13 @@
 				<td>Role</td>
 				<td>
 					<select name="role">
-						<option value="null" selected>- Pilih Role -</option>
+						<option value="" selected>- Pilih Role -</option>
 						<?php
 							include "../connection/connection.php";
 							$getRole = mysqli_query($conn, "SELECT * from roles");
 							while($data = mysqli_fetch_array($getRole)){
 						?>
-								<option value="<?php echo $data['role']; ?>"><?php echo $data['role']; ?></option>
+							<option value="<?php echo $data['role']; ?>"><?php echo $data['role']; ?></option>
 						<?php
 							}
 						?>

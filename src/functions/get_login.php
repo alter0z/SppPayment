@@ -3,14 +3,15 @@
 
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$username = $_POST['username'];
-		$role = $_POST['role'];
-		$password = $_POST['password'];
+    $password = $_POST['password'];
+    $role = $_POST['role'];
 		
-		if ($username == '' || $role = '' || $password == '') {
-			echo "Form belum lengkap!!";
+		if ($username == '' || $password == '') {
+			echo "Form belum lengkap!! $role $username $password";
 		} else {
-			$login = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password'");
+			$login = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password' and role='$role'");
 			$check = mysqli_num_rows($login);
+
 			if ($check > 0) {
 				session_start();
 				$data = mysqli_fetch_assoc($login);
@@ -21,9 +22,18 @@
 					$_SESSION['role'] = $role;
 
 					header('location:../index/admin.php');
+					// echo $role;
+				} else if ($data['role'] == "walikelas") {
+					$_SESSION['login'] = true;
+					$_SESSION['username'] = $username;
+					$_SESSION['role'] = $role;
+					$_SESSION['wclass'] = $data['name'];
+
+					header('location:../index/wclass.php');
+					// echo $role;
 				}
 			} else {
-				echo "Username dan Password anda Salah!!!";
+				echo "Username dan Password anda Salah!!! $role $username $password";
 			}
 		}
 	}
