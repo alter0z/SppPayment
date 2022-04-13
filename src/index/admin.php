@@ -29,12 +29,12 @@
   $dataUnpaid = mysqli_fetch_assoc($getUnpaid);
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid ps-4 pe-4">
     <!-- Count Users -->
     <div class="row">
         <div class="col-xl-4 col-xxl-4 col-sm-8">
             <!-- card data user (Admin) -->
-            <div class="card bg-primary bg-gradient p-3 mt-4 ms-4 me-2 opacity-75" style="border-radius: 26px">
+            <div class="card bg-primary bg-gradient p-3 mt-4 me-2 opacity-75" style="border-radius: 26px">
                 <div class="card-body">
                     <h2 class="text-white"><?php echo $dataUadmin['count'];?></h2>
                     <span class="text-white fs-18">Total Data User (Admin)</span>
@@ -52,7 +52,7 @@
         </div>
         <div class="col-xl-4 col-xxl-4 col-sm-8">
             <!-- card data user-->
-            <div class="card bg-info bg-gradient p-3 mt-4 me-4 opacity-75" style="border-radius: 26px">
+            <div class="card bg-info bg-gradient p-3 mt-4 opacity-75" style="border-radius: 26px">
                 <div class="card-body">
                     <h2 class="text-white"><?php echo $dataUser['count'];?></h2>
                     <span class="text-white fs-18">Total Data User</span>
@@ -64,7 +64,7 @@
     <div class="row">
         <div class="col-xl-3 col-xxl-3 col-sm-6">
             <!-- card data siswa -->
-            <div class="card bg-warning bg-gradient p-3 mt-4 ms-4 me-2 opacity-75" style="border-radius: 26px">
+            <div class="card bg-warning bg-gradient p-3 mt-4 me-2 opacity-75" style="border-radius: 26px">
                 <div class="card-body">
                     <h2 class="text-white"><?php echo $dataStudent['count'];?></h2>
                     <span class="text-white fs-18">Total Siswa</span>
@@ -91,7 +91,7 @@
         </div>
         <div class="col-xl-3 col-xxl-3 col-sm-6">
             <!-- card data SPP -->
-            <div class="card bg-info bg-gradient p-3 mt-4 me-4 opacity-75" style="border-radius: 26px">
+            <div class="card bg-info bg-gradient p-3 mt-4 opacity-75" style="border-radius: 26px">
                 <div class="card-body">
                     <h2 class="text-white"><?php echo $dataSpp['count'];?></h2>
                     <span class="text-white fs-18">Total Tagihan SPP</span>
@@ -103,7 +103,7 @@
     <div class="row">
         <div class="col-xl-6 col-xxl-6 col-sm-12">
             <!-- card data Walikelas = jumlah kelas-->
-            <div class="card bg-info bg-gradient p-3 mt-4 ms-4 me-2 opacity-75" style="border-radius: 26px">
+            <div class="card bg-info bg-gradient p-3 mt-4 me-2 opacity-75" style="border-radius: 26px">
                 <div class="card-body">
                     <h2 class="text-white"><?php echo $dataWclass['count'];?></h2>
                     <span class="text-white fs-18">Total Wali Kelas</span>
@@ -112,7 +112,7 @@
         </div>
         <div class="col-xl-6 col-xxl-6 col-sm-12">
             <!-- card data transaksi -->
-            <div class="card bg-warning bg-gradient p-3 mt-4 me-4 opacity-75" style="border-radius: 26px">
+            <div class="card bg-warning bg-gradient p-3 mt-4 opacity-75" style="border-radius: 26px">
                 <div class="card-body">
                     <h2 class="text-white"><?php echo '0';?></h2>
                     <span class="text-white fs-18">Total Transaksi</span>
