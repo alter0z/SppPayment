@@ -2,7 +2,15 @@
 
 <div class="content-body">
         <div class="container-fluid">
-          
+          <!-- page indicator -->
+            <div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
+			        <div class="card-body">
+			  	      <div class="">
+					        <a href="../index/admin.php" class="" style="text-decoration: none; color: rgb(131, 130, 130); font-weight: bold; font-size: larger;">Dashboard</a>
+					        <a href="javascript:void(0)" class="" style="text-decoration: none; color: #2196f3; font-weight: bold; font-size: larger;">/ Data Wali Kelas</a>
+          		  </div>
+			        </div>
+		        </div>
           <!-- row -->
           <div class="row">
             <div class="col-lg-12">
