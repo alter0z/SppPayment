@@ -1,7 +1,7 @@
 <?php include "../header/header.php"; ?>
 <div class="content-body">
         <div class="container-fluid">
-		<div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
+				<div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			  <div class="card-body">
 			  	<div class="">
 					<a href="../index/admin.php" class="" style="text-decoration: none; color: rgb(131, 130, 130); font-weight: bold; font-size: larger;">Dashboard</a>
@@ -13,10 +13,10 @@
 	</div>
           <!-- row -->
           <div class="row">
-		<div class="col-lg-12">
-		<div class="card bg-white p-2 m-4 shadow"style="border-radius: 16px;">
-		<div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
-				<h4 class="card-title">Add Data Wali Kelas</h4>
+					<div class="col-xl-12 col-lg-24">
+					<div class="card bg-white p-2 m-4 shadow"style="border-radius: 16px;">
+					<div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
+                  <h4 class="card-title">Add Data Wali Kelas</h4>
                 </div>
                 <div class="card-body">
                   <div class="basic-form">

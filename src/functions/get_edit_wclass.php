@@ -14,9 +14,13 @@
       mysqli_query($conn, "SET FOREIGN_KEY_CHECKS=0");
       $update = mysqli_query($conn, "UPDATE wclass set fullname='$name', class='$class' where class='$_GET[class]'");
 
+			session_start();
+
 			if (!$update) {
+				$_SESSION['message'] = 'failed';
 				echo "Penyimpanan data gagal..";
 			} else {
+				$_SESSION['message'] = 'success';
 				header('location:../show/showdatawclass.php');
 			}
 		}

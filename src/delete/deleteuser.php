@@ -5,9 +5,11 @@
 		$delete = mysqli_query($conn, "DELETE FROM user WHERE username='$_GET[username]'");
 		
 		if (!$delete) {
+			$_SESSION['message'] = 'failed';
 			echo "Hapus data gagal, atau data sedang digunakan di tabel lain...<br/>
 			<a href='../show/showdatauser.php'>Kembali</a>";	
 		}else{
+			$_SESSION['message'] = 'success';
 			header('location:../show/showdatauser.php');
 		}
 	} else {

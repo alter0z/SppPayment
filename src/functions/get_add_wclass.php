@@ -9,10 +9,14 @@
       echo "Form belum lengkap!!!";		
     } else {
       $save = mysqli_query($conn, "INSERT INTO wclass VALUES ('$class','$name')");
+
+      session_start();
       
       if(!$save){
+        $_SESSION['message'] = 'failed';
         echo "Simpan data gagal!!!";
       }else{
+        $_SESSION['message'] = 'success';
         header('location:../show/showdatawclass.php');
       }
     }

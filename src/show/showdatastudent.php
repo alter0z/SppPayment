@@ -3,6 +3,13 @@
 <div class="content-body">
         <div class="container-fluid">
           
+        <?php 
+          if (isset($_SESSION['message']) == 'success') {
+            // success alert
+          } else if (isset($_SESSION['message']) == 'failed') {
+            // danger alert
+          }
+        ?>
 
           <!-- <div class="alert alert-success alert-dismissible fade show">
             <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
@@ -15,6 +22,24 @@
             <strong>Error!</strong> Message sending failed.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
           </div> -->
+
+          <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a class="btn btn-primary" href='../delete/deletestudent.php?nis=$data[nis]'>Save changes</a>
+      </div>
+    </div>
+  </div>
+</div> -->
 		  <!-- page indicator -->
 		  <div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			<div class="card-body">
@@ -73,7 +98,7 @@
                               </button>
                               <div class='dropdown-menu shadow' style='border-radius: 16px;'>
                                 <a class='dropdown-item' href='../edit/editstudent.php?nis=$data[nis]'>Edit</a>
-                                <a class='dropdown-item' href='../delete/deletestudent.php?nis=$data[nis]'>Delete</a>
+                                <a class='dropdown-item' data-bs-toggle='modal' data-bs-target='#exampleModal'>Delete</a>
                               </div>
                             </div>
                           </td>
