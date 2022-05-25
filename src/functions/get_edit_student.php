@@ -18,10 +18,14 @@
       mysqli_query($conn, "SET FOREIGN_KEY_CHECKS=0");
       $update = mysqli_query($conn, "UPDATE student set nis='$nis', student_name='$name', class='$class', periode='$periode' where nis='$_GET[nis]'");
 
+			session_start();
+
 			if (!$update) {
+				$_SESSION['message'] = 'failed';
 				echo "Penyimpanan data gagal..";
 			} else {
 				mysqli_query($conn, "UPDATE spp set nis='$nis', duedate='$duedate', spp_cost='$cost' where nis='$_GET[nis]'");
+				$_SESSION['message'] = 'success';
 				header('location:../show/showdatastudent.php');
 			}
 		}

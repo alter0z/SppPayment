@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2022 at 11:07 PM
+-- Generation Time: Apr 15, 2022 at 07:12 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -37,7 +37,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`role`) VALUES
 ('admin'),
-('wali kelas');
+('walikelas');
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,8 @@ CREATE TABLE `spp` (
 INSERT INTO `spp` (`nis`, `duedate`, `spp_cost`, `status`) VALUES
 ('164131', '2022-04-15', 250000, 'Belum Lunas'),
 ('146516', '2022-04-14', 250000, 'Belum Lunas'),
-('645186', '2022-04-15', 250000, 'Belum Lunas');
+('645186', '2022-04-15', 250000, 'Belum Lunas'),
+('164586', '2022-04-12', 250000, 'Belum Lunas');
 
 -- --------------------------------------------------------
 
@@ -81,6 +82,7 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`nis`, `student_name`, `class`, `periode`) VALUES
 ('146516', 'bryand', '10-B', '2021-2022'),
 ('164131', 'ansori', '10-A', '2021-2022'),
+('164586', 'Sarah', '10-C', '2021-2022'),
 ('645186', 'Jane', '10-C', '2021-2022');
 
 -- --------------------------------------------------------
@@ -103,7 +105,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`name`, `role`, `username`, `password`) VALUES
 ('Afila Ansori', 'admin', 'alter0z', 'password'),
 ('John', 'admin', 'j0hn', 'root'),
-('Larry Page', 'admin', 'pagelarry3', '123456789');
+('John Doe', 'walikelas', 'j0hn3', 'john123'),
+('Larry Page', 'admin', 'pagelarry3', '123456789'),
+('Jeanne', 'walikelas', 'root', 'root');
 
 -- --------------------------------------------------------
 
