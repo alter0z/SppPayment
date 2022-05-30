@@ -30,7 +30,7 @@
 						<form method="post" action="">
                       <div class="row">
                         <div class="mb-3 col-md-6">
-						<label class="form-label">Role</label>
+						<label class="form-label">Kelas</label>
 						 
 						<select name="class" id="inputState" class="default-select form-control wide">
 							<option value="null">Pilih Kelas</option>

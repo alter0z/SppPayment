@@ -69,22 +69,16 @@ https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
               <a class="nav-link" href="../show/showdataspp.php">Data SPP</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="transaksi.php">Transaksi</a>
+              <a class="nav-link" href="../transaction/transaksi.php">Transaksi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../log/logs.php">Logs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../auth/logout.php">Logout</a>
             </li>
           </ul>
         </div>
-        <!-- <script>
-			$(document).ready(function () {
-  $("a").click(function () {
-    $("a.navclass.active").removeClass("active");
-    $(this).addClass("active");
-  });
-});
-
-		</script> -->
       </div>
     </nav>
   </body>

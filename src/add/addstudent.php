@@ -33,6 +33,14 @@
                           <input type="text" name="studentname" class="form-control" placeholder="Nama Siswa ex: Ratna Permata" />
                         </div>
                         <div class="mb-3 col-md-6">
+													<label class="form-label">Jenis Kelamin</label>
+                          <select id="inputState" name="gender" class="default-select form-control wide">
+														<option value="">Pilih Jenis Kelamin</option>
+														<option value="L">Laki-laki</option>
+														<option value="P">Perempuan</option>
+                          </select>
+                        </div>
+                        <div class="mb-3 col-md-6">
 													<label class="form-label">Kelas</label>
                           <select id="inputState" name="class" class="default-select form-control wide">
 														<option value="">Pilih Kelas</option>

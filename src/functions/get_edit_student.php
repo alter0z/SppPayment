@@ -5,7 +5,7 @@
   // SET FOREIGN_KEY_CHECKS=1; -- to re-enable them
 
   if($_SERVER['REQUEST_METHOD']=='POST'){
-		$nis 	= $_POST['getnis'];
+		$nis 	= $_POST['nis'];
 		$name 	= $_POST['studentname'];
 		$class 	= $_POST['class'];
 		$periode 	= $_POST['periode'];
@@ -15,16 +15,29 @@
 		if ($nis == '' || $name == '' || $class == '' || $duedate == ''){
 			echo "Form belum lengkap...";
 		} else {
+			mysqli_query($conn, "create or replace trigger update_student
+			after update on student
+			for each row
+			begin
+			update spp set nis = '$nis', '$duedate', spp_cost = '$cost' where nis = '$nis';
+			update current_spp set duedate = '$duedate' where nis = '$nis';
+			insert into log_student values ('','$nis',old.student_name,old.class,old.periode,null,null,new.student_name,new.class,new.periode,null,null,'Merubah Data Siswa',now(),'$_SESSION[fullname]');
+			end");
+
+			mysqli_query($conn, "create or replace trigger update_spp
+			after update on spp
+			for each row
+			begin
+			update log_student set old_spp_cost = old.spp_cost, new_spp_cost = new.spp_cost, old_duedate = old.duedate, new_duedate = new.duedate where nis = '$nis';
+			end");
+
       mysqli_query($conn, "SET FOREIGN_KEY_CHECKS=0");
       $update = mysqli_query($conn, "UPDATE student set nis='$nis', student_name='$name', class='$class', periode='$periode' where nis='$_GET[nis]'");
-
-			session_start();
 
 			if (!$update) {
 				$_SESSION['message'] = 'failed';
 				echo "Penyimpanan data gagal..";
 			} else {
-				mysqli_query($conn, "UPDATE spp set nis='$nis', duedate='$duedate', spp_cost='$cost' where nis='$_GET[nis]'");
 				$_SESSION['message'] = 'success';
 				header('location:../show/showdatastudent.php');
 			}

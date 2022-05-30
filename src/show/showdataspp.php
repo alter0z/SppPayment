@@ -21,23 +21,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
           </div> -->
 
-                                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a class="btn btn-primary" href='../functions/payment.php?nis=<?php echo $getNis; ?>'>Save changes</a>
-      </div>
-    </div>
-  </div>
-</div> -->
 	  <!-- page indicator -->
     <div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 		  <div class="card-body">
@@ -70,6 +53,7 @@
                     <th style="width: 80px"><strong>#</strong></th>
                     <th><strong>NIS</strong></th>
                     <th><strong>Nama</strong></th>
+                    <th><strong>Jenis Kelamin</strong></th>
                     <th><strong>Kelas</strong></th>
                     <th><strong>Wali Kelas</strong></th>
                     <th><strong>Tahun Ajaran</strong></th>
@@ -84,11 +68,12 @@
                 <?php
                   include "../connection/connection.php";
 
-                  $getNis;
-
                   if (isset($_POST['getSearch'])) {
-                    $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and a.nis like '%$_POST[search]%' or a.student_name like '%$_POST[search]%' and status = 'Belum Lunas' order by a.student_name asc");
+                    $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, d.* FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class right join current_spp as d on b.nis = d.nis where c.class in (a.class) and a.nis like '%$_POST[search]%' or a.student_name like '%$_POST[search]%' and d.current_status = 'Belum Lunas' and month(d.current_duedate) = month(now()) order by a.student_name asc");
                     $no=1;
+
+                    $getNis;
+
                     while($data = mysqli_fetch_array($getData)) {
                       $date = date('D, d M Y',strtotime($data['duedate']));
                       $getNis = $data['nis'];
@@ -96,6 +81,7 @@
                       <td><strong>$no</strong></td>
                       <td>$data[nis]</td>
                       <td>$data[student_name]</td>
+                      <td>$data[jenis_kelamin]</td>
                       <td>$data[class]</td>
                       <td>$data[fullname]</td>
                       <td>$data[periode]</td>
@@ -106,15 +92,42 @@
                       </tr>";
                       $no++;
                     }
+
+                    echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                    <div class='modal-dialog'>
+                      <div class='modal-content'>
+                        <div class='modal-header'>
+                          <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
+                          <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </div>
+                        <div class='modal-body'>
+                          ...
+                        </div>
+                        <div class='modal-footer'>
+                          <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                          <a class='btn btn-primary' href='../functions/payment.php?nis=$getNis'>Save changes</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>";
+
                   } else {
-                    $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and status = 'Belum Lunas' order by a.student_name asc");
+                    $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, d.* FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class right join current_spp as d on b.nis = d.nis where c.class in (a.class) and month(d.current_duedate) = month(now()) and d.current_status = 'Belum Lunas' order by a.student_name asc");
                     $no=1;
+
+                    echo mysqli_error($conn);
+
+                    $getNis;
+                    $dataCount = 0;
+
                     while($data = mysqli_fetch_array($getData)) {
                       $date = date('D, d M Y',strtotime($data['duedate']));
+                      $getNis = $data['nis'];
                       echo "<tr>
                       <td><strong>$no</strong></td>
                       <td>$data[nis]</td>
                       <td>$data[student_name]</td>
+                      <td>$data[jenis_kelamin]</td>
                       <td>$data[class]</td>
                       <td>$data[fullname]</td>
                       <td>$data[periode]</td>
@@ -124,6 +137,27 @@
                       <td><a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Bayar</a></td>
                       </tr>";
                       $no++;
+                      $dataCount = count($data);
+                    }
+
+                    if ($dataCount > 0){
+                      echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                        <div class='modal-dialog'>
+                          <div class='modal-content'>
+                            <div class='modal-header'>
+                              <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
+                              <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                            </div>
+                            <div class='modal-body'>
+                              ...
+                            </div>
+                            <div class='modal-footer'>
+                              <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                              <a class='btn btn-primary' href='../functions/payment.php?nis=$getNis'>Save changes</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>";
                     }
                   }
                 ?>
@@ -150,6 +184,7 @@
                     <th style="width: 80px"><strong>#</strong></th>
                     <th><strong>NIS</strong></th>
                     <th><strong>Nama</strong></th>
+                    <th><strong>Jenis Kelmain</strong></th>
                     <th><strong>Kelas</strong></th>
                     <th><strong>Wali Kelas</strong></th>
                     <th><strong>Tahun Ajaran</strong></th>
@@ -163,7 +198,7 @@
                 <?php
                   include "../connection/connection.php";
 
-                  $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) order by a.student_name asc");
+                  $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, d.* FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class right join current_spp as d on b.nis = d.nis where c.class in (a.class) and month(d.current_duedate) = month(now()) order by a.student_name asc");
                   $no=1;
                   while($data = mysqli_fetch_array($getData)) {
                     $date = date('D, d M Y',strtotime($data['duedate']));
@@ -171,6 +206,7 @@
                     <td><strong>$no</strong></td>
                     <td>$data[nis]</td>
                     <td>$data[student_name]</td>
+                    <td>$data[jenis_kelamin]</td>
                     <td>$data[class]</td>
                     <td>$data[fullname]</td>
                     <td>$data[periode]</td>

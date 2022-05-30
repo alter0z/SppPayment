@@ -1,84 +1,41 @@
-<?php include "header.php" ?>
+<?php include "../header/header.php"; ?>
 
 <h3>Transaksi Pembayaran SPP</h3>
-<form method="get" action="">
-	NIS: <input type="text" name="nis" />
-	<input type="submit" name="cari" value="Cari Siswa" />
-</form>
-
-<?php
-if(isset($_GET['nis']) && $_GET['nis']!=''){
-	$sqlSiswa = mysqli_query($konek, "SELECT * FROM siswa WHERE nis='$_GET[nis]'");
-	$ds=mysqli_fetch_array($sqlSiswa);
-	$nis = $ds['nis'];
-?>
-
-<h3>Biodata Siswa</h3>
-<table>
-	<tr>
-		<td>NIS</td>
-		<td>:</td>
-		<td><?php echo $ds['nis']; ?></td>
-	</tr>
-	<tr>
-		<td>Nama Siswa</td>
-		<td>:</td>
-		<td><?php echo $ds['namasiswa']; ?></td>
-	</tr>
-	<tr>
-		<td>Kelas</td>
-		<td>:</td>
-		<td><?php echo $ds['kelas']; ?></td>
-	</tr>
-	<tr>
-		<td>Tahun Ajaran</td>
-		<td>:</td>
-		<td><?php echo $ds['tahunajaran']; ?></td>
-	</tr>
-</table>
 
 <h3>Tagihan SPP Siswa</h3>
 <table border="1">
 	<tr>
 		<th>No</th>
-		<th>Bulan</th>
-		<th>Jatuh Tempo</th>
-		<th>No. Bayar</th>
-		<th>Tgl. Bayar</th>
-		<th>Jumlah</th>
-		<th>Keterangan</th>
-		<th>Bayar</th>
+		<th>Nis</th>
+		<th>Nama</th>
+		<th>Kelas</th>
+		<th>Wali Kelas</th>
+		<th>status</th>
+		<th>Tanggal</th>
+		<th>Admin</th>
 	</tr>
 
 	<?php
-	$sql = mysqli_query($konek, "SELECT * FROM spp WHERE idsiswa='$ds[idsiswa]' ORDER BY jatuhtempo ASC");
+	include "../connection/connection.php";
+	$sql = mysqli_query($conn, "SELECT a.*, b.*, c.*, d.* FROM transaksi as a inner join student as b on a.nis = b.nis right join current_spp as c on a.nis = c.nis right join wclass as d on b.class = d.class where d.class in (b.class)");
+	echo mysqli_error($conn);
 	$no=1;
 	while($d=mysqli_fetch_array($sql)){
 		echo "<tr>
 			<td>$no</td>
-			<td>$d[bulan]</td>
-			<td>$d[jatuhtempo]</td>
-			<td>$d[nobayar]</td>
-			<td>$d[tglbayar]</td>
-			<td>$d[jumlah]</td>
-			<td>$d[ket]</td>
-			<td align='center'>";
-				if($d['nobayar']==''){
-					echo "<a href='proses_transaksi.php?nis=$nis&act=bayar&id=$d[idspp]'>Bayar</a>";
-				}else{
-					echo "-";
-				}
-			echo "</td>
+			<td>$d[nis]</td>
+			<td>$d[student_name]</td>
+			<td>$d[class]</td>
+			<td>$d[fullname]</td>
+			<td>$d[current_status]</td>
+			<td>$d[tanggal]</td>
+			<td>$d[admin]</td>
 		</tr>";
 		$no++;
 	}
 	?>
 </table>
 
-<?php
-}
-?>
-
 <p>Pembayaran SPP dilakukan dengan cara mencari tagihan siswa dengan NIS melalui form di atas, kemudian proses pembayaran</p>
 
-<?php include "footer.php" ?>
+<?php include "../footer/footer.php"; ?>

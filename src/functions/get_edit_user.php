@@ -13,7 +13,13 @@
 		if ($name == '' || $username == '' || $role == '' || $password == '') {
 			echo "Form belum lengkap...";
 		} else {
-      // mysqli_query($conn, "SET FOREIGN_KEY_CHECKS=0");
+      mysqli_query($conn, "create or replace trigger update_user
+			after update on user
+			for each row
+			begin
+			insert into log_user values ('',old.name,old.role,old.username,old.password,new.name,new.role,new.username,new.password,'Merubah Data User',now(),'$_SESSION[fullname]');
+			end");
+
       $update = mysqli_query($conn, "UPDATE user set name='$name', role='$role', username='$username', password='$password' where username='$_GET[username]'");
 
 			session_start();

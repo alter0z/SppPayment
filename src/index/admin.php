@@ -22,10 +22,10 @@
   $getDataSpp = mysqli_query($conn, "SELECT count(nis) as count from spp");
   $dataSpp = mysqli_fetch_assoc($getDataSpp);
   
-  $getPaid = mysqli_query($conn, "SELECT count(nis) as count from spp where status='Lunas'");
+  $getPaid = mysqli_query($conn, "SELECT count(nis) as count from current_spp where current_status='Lunas'");
   $dataPaid = mysqli_fetch_assoc($getPaid);
   
-  $getUnpaid = mysqli_query($conn, "SELECT count(nis) as count from spp where status='Belum Lunas'");
+  $getUnpaid = mysqli_query($conn, "SELECT count(nis) as count from current_spp where current_status='Belum Lunas'");
   $dataUnpaid = mysqli_fetch_assoc($getUnpaid);
 ?>
 

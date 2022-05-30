@@ -23,23 +23,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
           </div> -->
 
-          <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a class="btn btn-primary" href='../delete/deletestudent.php?nis=$data[nis]'>Save changes</a>
-      </div>
-    </div>
-  </div>
-</div> -->
 		  <!-- page indicator -->
 		  <div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			<div class="card-body">
@@ -64,6 +47,7 @@
                           <th style="width: 80px"><strong>#</strong></th>
                           <th><strong>NIS</strong></th>
                           <th><strong>Nama</strong></th>
+                          <th><strong>Jenis Kelamin</strong></th>
                           <th><strong>Kelas</strong></th>
                           <th><strong>Wali Kelas</strong></th>
                           <th><strong>Tahun Ajaran</strong></th>
@@ -76,11 +60,17 @@
 
 												$getData=mysqli_query($conn, "SELECT a.*, b.fullname FROM student as a inner join wclass as b on a.class = b.class order by class asc");
 												$no=1;
+
+                        $getNis;
+                        $dataCount = 0;
+
 												while($data = mysqli_fetch_array($getData)){
+                          $getNis = $data['nis'];
 													echo "<tr>
                           <td><strong>$no</strong></td>
                           <td>$data[nis]</td>
                           <td>$data[student_name]</td>
+                          <td>$data[jenis_kelamin]</td>
                           <td>$data[class]</td>
                           <td>$data[fullname]</td>
                           <td>$data[periode]</td>
@@ -104,7 +94,28 @@
                           </td>
                         </tr>";
 													$no++;
+                          $dataCount = count($data);
 												}
+
+                        if ($dataCount > 0){
+                          echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                            <div class='modal-dialog'>
+                              <div class='modal-content'>
+                                <div class='modal-header'>
+                                  <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
+                                  <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                                </div>
+                                <div class='modal-body'>
+                                  ...
+                                </div>
+                                <div class='modal-footer'>
+                                  <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                                  <a class='btn btn-primary' href='../delete/deletestudent.php?nis=$getNis'>Save changes</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>";
+                        }
 											?>
                       </tbody>
                     </table>

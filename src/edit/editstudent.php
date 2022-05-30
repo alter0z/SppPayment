@@ -8,6 +8,9 @@
 
 	$getDataSpp = mysqli_query($conn, "SELECT * FROM spp WHERE nis='$_GET[nis]'");
 	$dataSpp = mysqli_fetch_array($getDataSpp);
+
+	$getDataSppCurrent = mysqli_query($conn, "SELECT * FROM current_spp WHERE nis='$_GET[nis]'");
+	$dataSppCurrent = mysqli_fetch_array($getDataSppCurrent);
 ?>
 
 <div class="content-body">
@@ -41,6 +44,27 @@
                           <input type="text" name="studentname" class="form-control" value="<?php echo $data['student_name']; ?>" placeholder="Nama Siswa ex: Ratna Permata" />
                         </div>
                         <div class="mb-3 col-md-6">
+													<label class="form-label">Jenis Kelamin</label>
+                          <select id="inputState" name="class" class="default-select form-control wide">
+													<?php
+											include "../connection/connection.php";
+
+											$getDataGender = mysqli_query($conn, "SELECT * from student");
+											while($dataGender = mysqli_fetch_array($getDataGender)){
+
+												if($dataGender['jenis_kelamin'] == $data['jenis_kelamin']){
+													$selected = "selected";
+												}else{
+													$selected ="";
+												}
+												?>
+											<option value="<?php echo $dataGender['jenis_kelamin']; ?>" <?php echo $selected; ?>><?php echo $dataGender['jenis_kelamin']; ?></option>
+										<?php
+											}
+										?>
+                          </select>
+                        </div>
+                        <div class="mb-3 col-md-6">
 													<label class="form-label">Kelas</label>
                           <select id="inputState" name="class" class="default-select form-control wide">
 													<?php
@@ -71,11 +95,11 @@
 												</div>
 												<div class="mb-3 col-md-6">
 													<label class="form-label">Jatuh Tempo</label>
-													<input type="date" name="duedate" class="form-control" value="<?php echo $dataSpp['duedate']; ?>" />
+													<input type="date" name="duedate" class="form-control" value="<?php echo $dataSppCurrent['current_duedate']; ?>" />
 												</div>
 												<div class="mb-3 col-md-6">
 													<label class="form-label " style="display: none;">Status</label>
-													<input type="text" name="status" style="display: none;" class="form-control" value="<?php echo $dataSpp['status']; ?>" readonly />
+													<input type="text" name="status" style="display: none;" class="form-control" value="<?php echo $dataSppCurrent['current_status']; ?>" readonly />
 												</div>
                       </div>
                       <button type="submit" class="btn btn-primary">Save</button>
