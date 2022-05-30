@@ -16,7 +16,7 @@
           <!-- row -->
           <div class="row">
 					<div class="col-xl-12 col-lg-24">
-              <div class="card bg-white p-4 m-4 shadow" style="border-radius: 16px;">
+              <div class="card bg-white p-2 m-4 shadow" style="border-radius: 16px;">
                 <div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
                   <h4 class="card-title">Add Data Siswa</h4>
                 </div>
