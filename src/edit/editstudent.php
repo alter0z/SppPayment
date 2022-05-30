@@ -10,7 +10,7 @@
 	$dataSpp = mysqli_fetch_array($getDataSpp);
 ?>
 
-<di class="content-body">
+<div class="content-body">
   <div class="container-fluid">
 		<div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			<div class="card-body">
@@ -24,7 +24,7 @@
     <!-- row -->
     <div class="row">
 			<div class="col-xl-12 col-lg-24">
-        <div class="card bg-white p-2 m-4 shadow" style="border-radius: 16px;">
+        <div class="card bg-white p-2 m-3 shadow" style="border-radius: 16px;">
           <div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
             <h4 class="card-title">Edit Data Siswa</h4>
           </div>
