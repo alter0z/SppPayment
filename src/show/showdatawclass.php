@@ -1,6 +1,6 @@
 <?php include "../header/header.php"; ?>
 
-<div class="content-body">
+<div class="content-body" style="margin-top: 125px;">
         <div class="container-fluid">
         <?php 
           if (isset($_SESSION['message']) == 'success') {

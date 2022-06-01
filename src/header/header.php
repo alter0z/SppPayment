@@ -33,7 +33,7 @@ https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
   </head>
   <body style="background-color: #fafafa">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white mt-3 mb-3 me-4 ms-4 shadow p-2" style="border-radius: 13px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white mt-3 mb-3 me-4 ms-4 shadow p-2 fixed-top" style="border-radius: 13px">
       <div class="container-fluid">
         <!-- brand -->
         <a class="navbar-brand" href="#" style="color: #2196f3">

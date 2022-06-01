@@ -14,7 +14,7 @@
 			after insert on user
 			for each row
 			begin
-			insert into log_user values ('',null,null,null,null,new.name,new.role,new.username,new.password,'Memasukkan Data User',now(),'$_SESSION[fullname]');
+			insert into log_user values ('',null,null,null,null,new.name,new.username,new.role,new.password,'Memasukkan Data User',now(),'$_SESSION[fullname]');
 			end");
 
       $save = mysqli_query($conn, "INSERT INTO user VALUES ('$name','$role','$username','$password')");
