@@ -3,11 +3,12 @@
 <?php
 	include "../connection/connection.php";
 
+		$dataSpp = mysqli_query($conn, "SELECT*from spp where nis = '$_GET[nis]'");
+
 	$getData = mysqli_query($conn, "SELECT * FROM student WHERE nis='$_GET[nis]'");
 	$data = mysqli_fetch_array($getData);
 
-	$getDataSpp = mysqli_query($conn, "SELECT * FROM spp WHERE nis='$_GET[nis]'");
-	$dataSpp = mysqli_fetch_array($getDataSpp);
+	// echo "<br><br><br<br><br>";
 
 	$getDataSppCurrent = mysqli_query($conn, "SELECT * FROM current_spp WHERE nis='$_GET[nis]'");
 	$dataSppCurrent = mysqli_fetch_array($getDataSppCurrent);
@@ -91,7 +92,7 @@
                         </div>
 												<div class="mb-3 col-md-6">
 													<label class="form-label">Biaya</label>
-													<input type="text" name="sppcost" class="form-control" value="<?php echo $dataSpp['spp_cost']; ?>" readonly />
+													<input type="text" name="sppcost" class="form-control" value="<?php while ($spp = mysqli_fetch_array($dataSpp)) {echo $spp['spp_cost'];} ?>" readonly />
 												</div>
 												<div class="mb-3 col-md-6">
 													<label class="form-label">Jatuh Tempo</label>
@@ -112,7 +113,5 @@
     </div>
   </div>
 </div>
-
-<?php include "../functions/get_edit_student.php" ?>
 
 <?php include "../footer/footer.php" ?>

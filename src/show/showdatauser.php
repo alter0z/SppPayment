@@ -60,6 +60,7 @@
                         $dataCount = 0;
 
 												while($data = mysqli_fetch_array($getData)){
+                          $getUsername = $data['username'];
 													echo "<tr>
                           <td><strong>$no</strong></td>
                           <td>$data[name]</td>
@@ -85,7 +86,6 @@
                           </td>
                         </tr>";
 													$no++;
-                          $getUsername = $data['username'];
                           $dataCount = count($data);
 												}
 

@@ -21,6 +21,28 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
           </div> -->
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <from method="post" action="../functions/payment.php"></from>
+            <div class="modal-footer">
+              <input type="hidden" name="nis" id="payment-nis">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <!-- <button type="submit" class="btn btn-warning" name="pay">Bayar</button> -->
+              <button type="submit">test</button>
+            </div>
+          </from>
+        </div>
+      </div>
+    </div>
+
 	  <!-- page indicator -->
     <div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 		  <div class="card-body">
@@ -72,11 +94,8 @@
                     $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, d.* FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class right join current_spp as d on b.nis = d.nis where c.class in (a.class) and a.nis like '%$_POST[search]%' or a.student_name like '%$_POST[search]%' and d.current_status = 'Belum Lunas' and month(d.current_duedate) = month(now()) order by a.student_name asc");
                     $no=1;
 
-                    $getNis;
-
                     while($data = mysqli_fetch_array($getData)) {
                       $date = date('D, d M Y',strtotime($data['duedate']));
-                      $getNis = $data['nis'];
                       echo "<tr>
                       <td><strong>$no</strong></td>
                       <td>$data[nis]</td>
@@ -88,44 +107,20 @@
                       <td>$data[spp_cost]</td>
                       <td>$date</td>
                       <td>$data[status]</td>
-                      <td><a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Bayar</a></td>
+                      <td><a href='' class='btn btn-primary pay-button'>Bayar</a></td>
                       </tr>";
                       $no++;
                     }
-
-                    echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                    <div class='modal-dialog'>
-                      <div class='modal-content'>
-                        <div class='modal-header'>
-                          <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
-                          <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                        </div>
-                        <div class='modal-body'>
-                          ...
-                        </div>
-                        <div class='modal-footer'>
-                          <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                          <a class='btn btn-primary' href='../functions/payment.php?nis=$getNis'>Save changes</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>";
 
                   } else {
                     $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, d.* FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class right join current_spp as d on b.nis = d.nis where c.class in (a.class) and month(d.current_duedate) = month(now()) and d.current_status = 'Belum Lunas' order by a.student_name asc");
                     $no=1;
 
-                    echo mysqli_error($conn);
-
-                    $getNis;
-                    $dataCount = 0;
-
                     while($data = mysqli_fetch_array($getData)) {
                       $date = date('D, d M Y',strtotime($data['duedate']));
-                      $getNis = $data['nis'];
                       echo "<tr>
                       <td><strong>$no</strong></td>
-                      <td>$data[nis]</td>
+                      <td class='stud-nis'>$data[nis]</td>
                       <td>$data[student_name]</td>
                       <td>$data[jenis_kelamin]</td>
                       <td>$data[class]</td>
@@ -134,32 +129,11 @@
                       <td>$data[spp_cost]</td>
                       <td>$date</td>
                       <td>$data[status]</td>
-                      <td><a class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Bayar</a></td>
+                      <td><a href='' class='btn btn-primary pay-button'>Bayar</a></td>
                       </tr>";
                       $no++;
-                      $dataCount = count($data);
+                      }
                     }
-
-                    if ($dataCount > 0){
-                      echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                        <div class='modal-dialog'>
-                          <div class='modal-content'>
-                            <div class='modal-header'>
-                              <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
-                              <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                            </div>
-                            <div class='modal-body'>
-                              ...
-                            </div>
-                            <div class='modal-footer'>
-                              <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                              <a class='btn btn-primary' href='../functions/payment.php?nis=$getNis'>Save changes</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>";
-                    }
-                  }
                 ?>
                 </tbody>
               </table>
@@ -226,6 +200,18 @@
     </div>
   </div>
 </div>
-<br>
+
+<!-- <script>
+// $('.delete-button').on('click', function (e) {
+// var id = $(this).attr('data-id');
+//  $('.confirm-delete').attr('data-id',id);
+
+// });
+// $(".confirm-delete").on('click', function (e) {
+//     var id = $(this).attr('data-id');
+//     console.log(id);
+//     location.href="../functions/payment.php?nis="+id;
+// });
+</script> -->
 
 <?php include "../footer/footer.php"; ?>

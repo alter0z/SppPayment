@@ -78,6 +78,5 @@
     </div>
   </div>
 </div>
-<?php include "../functions/get_edit_user.php" ?>
 
 <?php include "../footer/footer.php" ?>

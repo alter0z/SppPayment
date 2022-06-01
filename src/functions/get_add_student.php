@@ -11,14 +11,11 @@
 		$duedate = $_POST['duedate'];
 		$status = $_POST['status'];
 
-		if ($nis == '' || $name == '' || $class == '' || $duedate == '' || $gender == '') {
-			echo "Form belum lengkap...";
-		} else {
-			mysqli_query($conn, "create or replace trigger add_student
+		mysqli_query($conn, "create or replace trigger add_student
 			after insert on student
 			for each row
 			begin
-			insert into spp values ('$nis','$duedate','$cost','$status');
+			insert into spp values ('','$nis','$duedate','$cost','$status');
 			insert into current_spp values ('$nis','$duedate','$status');
 			insert into log_student values ('','$nis',null,null,null,null,null,new.student_name,new.class,new.periode,null,null,'Memasukkan Data Siswa',now(),'$_SESSION[fullname]');
 			end");
@@ -29,6 +26,10 @@
 			begin
 			update log_student set new_spp_cost = new.spp_cost, new_duedate = new.duedate where nis = '$nis';
 			end");
+
+		if ($nis == '' || $name == '' || $class == '' || $duedate == '' || $gender == '') {
+			echo "Form belum lengkap...";
+		} else {
 
 			mysqli_query($conn, "set foreign_key_checks = 0");
 

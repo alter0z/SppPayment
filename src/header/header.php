@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
+  <?php
   // ob_start();
 	// session_start();
 	// if (!isset($_SESSION['login'])) {
@@ -24,14 +24,13 @@
     <link rel="shortcut icon" type="image/png" href="../img/sp.png" />
 
     <!-- js -->
-    <!-- <script src="
-https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-    </script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
     <!-- <script src="../js/script.js"></script> -->
 
     <title>Aplikasi Pembayaran SPP</title>
   </head>
-  <body style="background-color: #fafafa">
+  <body style="background-color: #fafafa; font-family: 'SF Pro Text', Roboto, sans-serif">
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white mt-3 mb-3 me-4 ms-4 shadow p-2 fixed-top" style="border-radius: 13px">
       <div class="container-fluid">

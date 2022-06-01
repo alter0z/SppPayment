@@ -312,6 +312,8 @@
 											<td>$d[new_class]</td>
 											<td>$d[old_period]</td>
 											<td>$d[new_period]</td>
+											<td>$d[old_duedate]</td>
+											<td>$d[new_duedate]</td>
 											<td>$d[old_spp_cost]</td>
 											<td>$d[new_spp_cost]</td>
 											<td>$d[status]</td>
@@ -474,3 +476,5 @@
 </div>
 
 <?php include "../footer/footer.php"; ?>
+
+<!-- SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema'; -->
