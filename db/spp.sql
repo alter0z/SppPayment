@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2022 at 06:46 PM
+-- Generation Time: Jun 01, 2022 at 06:13 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -20,6 +20,37 @@ SET time_zone = "+00:00";
 --
 -- Database: `spp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `current_spp`
+--
+
+CREATE TABLE `current_spp` (
+  `nis` varchar(128) NOT NULL,
+  `current_duedate` date DEFAULT NULL,
+  `current_status` varchar(64) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `current_spp`
+--
+
+INSERT INTO `current_spp` (`nis`, `current_duedate`, `current_status`) VALUES
+('124578', '2022-05-24', 'Lunas'),
+('235689', '2022-05-26', 'Belum Lunas');
+
+--
+-- Triggers `current_spp`
+--
+DELIMITER $$
+CREATE TRIGGER `pay` AFTER UPDATE ON `current_spp` FOR EACH ROW begin
+  insert into transaksi values ('','Afila Ansori','124578',now());
+  update spp set duedate = date_add(duedate,interval 1 month), status = 'Belum Lunas' where nis = '124578';
+  end
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -50,12 +81,12 @@ CREATE TABLE `log_student` (
 --
 
 INSERT INTO `log_student` (`id`, `nis`, `old_name`, `old_class`, `old_period`, `old_duedate`, `old_spp_cost`, `new_name`, `new_class`, `new_period`, `new_duedate`, `new_spp_cost`, `status`, `tanggal`, `admin`) VALUES
-(3, '258147', NULL, NULL, NULL, '2022-05-25', 250000, 'as', '10-B', '2021-2022', '2022-05-25', 250000, 'Memasukkan Data Siswa', '2022-05-25 22:43:00', 'Afila Ansori'),
-(4, '258147', 'as', '10-B', '2021-2022', '2022-05-25', 250000, NULL, NULL, NULL, '2022-05-25', 250000, 'Menghapus Data Siswa', '2022-05-25 22:44:20', 'Afila Ansori'),
-(5, '258147', 'Ucup', '10-C', '2021-2022', '2022-05-25', 250000, NULL, NULL, NULL, '2022-05-25', 250000, 'Menghapus Data Siswa', '2022-05-25 22:44:56', 'Afila Ansori'),
-(6, '235689', NULL, NULL, NULL, '2022-05-25', 250000, 'ucup', '10-C', '2021-2022', NULL, NULL, 'Memasukkan Data Siswa', '2022-05-25 22:46:24', 'Afila Ansori'),
-(7, '235689', 'ucup', '10-C', '2021-2022', '2022-05-25', 250000, 'ucok', '10-C', '2021-2022', NULL, NULL, 'Merubah Data Siswa', '2022-05-25 22:46:56', 'Afila Ansori'),
-(8, '235689', 'ucok', '10-C', '2021-2022', '2022-05-25', 250000, NULL, NULL, NULL, NULL, NULL, 'Menghapus Data Siswa', '2022-05-25 22:47:09', 'Afila Ansori');
+(40, '', 'Nishimiya', '10-A', '2021-2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Menghapus Data Siswa', '2022-05-30 23:12:55', 'Afila Ansori'),
+(41, '124578', NULL, NULL, NULL, NULL, NULL, 'Nishimiya', '10-B', '2021-2022', NULL, NULL, 'Memasukkan Data Siswa', '2022-05-30 23:22:53', 'Afila Ansori'),
+(42, '235689', NULL, NULL, NULL, '2022-06-24', 250000, 'Shouyo', '10-A', '2021-2022', NULL, NULL, 'Memasukkan Data Siswa', '2022-05-30 23:33:17', 'Afila Ansori'),
+(43, '235689', 'Shouyo', '10-A', '2021-2022', '2022-06-24', 250000, 'Shouyo', '10-B', '2021-2022', NULL, NULL, 'Merubah Data Siswa', '2022-05-30 23:35:20', 'Afila Ansori'),
+(44, '235689', 'Shouyo', '10-B', '2021-2022', '2022-06-24', 250000, 'Shouyo', '10-B', '2021-2022', NULL, NULL, 'Merubah Data Siswa', '2022-05-30 23:35:21', 'Afila Ansori'),
+(45, '', 'Shouyo', '10-B', '2021-2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Menghapus Data Siswa', '2022-05-30 23:35:33', 'Afila Ansori');
 
 -- --------------------------------------------------------
 
@@ -78,6 +109,16 @@ CREATE TABLE `log_user` (
   `admin` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `log_user`
+--
+
+INSERT INTO `log_user` (`id`, `old_name`, `old_username`, `old_role`, `old_password`, `new_name`, `new_username`, `new_role`, `new_password`, `status`, `tanggal`, `admin`) VALUES
+(4, 'Larry Page', 'admin', 'pagelarry3', '123456789', 'Larry Page', 'admin', 'lp3', '123456789', 'Merubah Data User', '2022-05-30 23:28:22', 'Afila Ansori'),
+(5, 'Larry Page', 'admin', 'lp3', '123456789', NULL, NULL, NULL, NULL, 'Menghapus Data User', '2022-05-30 23:28:29', 'Afila Ansori'),
+(6, NULL, NULL, NULL, NULL, 'a', 'admin', 'a', 'a', 'Memasukkan Data User', '2022-05-30 23:54:56', 'Afila Ansori'),
+(7, 'John Doe', 'walikelas', 'j0hn3', 'john123', NULL, NULL, NULL, NULL, 'Menghapus Data User', '2022-05-30 23:55:01', 'Afila Ansori');
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +135,17 @@ CREATE TABLE `log_wclass` (
   `tanggal` datetime DEFAULT NULL,
   `admin` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `log_wclass`
+--
+
+INSERT INTO `log_wclass` (`id`, `old_name`, `old_class`, `new_name`, `new_class`, `status`, `tanggal`, `admin`) VALUES
+(3, NULL, NULL, 'Dian Diana', '10-E', 'Memasukkan Data Walikelas', '2022-05-30 23:28:53', 'Afila Ansori'),
+(4, 'Dian Diana', '10-E', 'Dian Angraini', '11-A', 'Merubah Data Walikelas', '2022-05-30 23:32:53', 'Afila Ansori'),
+(5, NULL, NULL, 'a', '11-B', 'Memasukkan Data Walikelas', '2022-05-31 00:20:38', 'Afila Ansori'),
+(6, NULL, NULL, 'd', '12-B', 'Memasukkan Data Walikelas', '2022-05-31 00:23:36', 'Afila Ansori'),
+(7, 'd', '12-B', NULL, NULL, 'Menghapus Data Walikelas', '2022-05-31 00:23:41', 'Afila Ansori');
 
 -- --------------------------------------------------------
 
@@ -121,9 +173,9 @@ INSERT INTO `roles` (`role`) VALUES
 
 CREATE TABLE `spp` (
   `nis` varchar(128) DEFAULT NULL,
-  `duedate` date DEFAULT NULL,
+  `duedate` date NOT NULL,
   `spp_cost` int(11) DEFAULT NULL,
-  `status` varchar(128) DEFAULT NULL
+  `status` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -131,34 +183,27 @@ CREATE TABLE `spp` (
 --
 
 INSERT INTO `spp` (`nis`, `duedate`, `spp_cost`, `status`) VALUES
-('164131', '2022-04-15', 250000, 'Lunas'),
-('146516', '2022-04-14', 250000, 'Lunas'),
-('645186', '2022-04-15', 250000, 'Belum Lunas'),
-('164586', '2022-04-12', 250000, 'Lunas'),
-('164528', '2022-04-27', 250000, 'Lunas'),
-('185625', '2022-04-29', 250000, 'Belum Lunas'),
-('128945', '2022-04-30', 250000, 'Lunas'),
-('451578', '2022-04-27', 250000, 'Belum Lunas');
+('235689', '2022-05-26', 250000, 'Belum Lunas');
 
 --
 -- Triggers `spp`
 --
 DELIMITER $$
 CREATE TRIGGER `add_spp` AFTER INSERT ON `spp` FOR EACH ROW begin
-			update log_student set new_duedate = new.duedate, new_spp_cost = new.spp_cost;
+			update log_student set new_spp_cost = new.spp_cost, new_duedate = new.duedate where nis = '235689';
 			end
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `delete_spp` AFTER DELETE ON `spp` FOR EACH ROW begin
-			update log_student set old_duedate = old.duedate, old_spp_cost = old.spp_cost;
-			end
+		update log_student set old_spp_cost = old.spp_cost, old_duedate = old.duedate where nis = '235689';
+		end
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `pay` AFTER UPDATE ON `spp` FOR EACH ROW begin
-  insert into transaksi values ('','Afila Ansori','164586',now());
-  end
+CREATE TRIGGER `update_spp` AFTER UPDATE ON `spp` FOR EACH ROW begin
+			update log_student set old_spp_cost = old.spp_cost, new_spp_cost = new.spp_cost, old_duedate = old.duedate, new_duedate = new.duedate where nis = '235689';
+			end
 $$
 DELIMITER ;
 
@@ -171,6 +216,7 @@ DELIMITER ;
 CREATE TABLE `student` (
   `nis` varchar(128) NOT NULL,
   `student_name` varchar(255) DEFAULT NULL,
+  `jenis_kelamin` varchar(1) NOT NULL,
   `class` varchar(8) DEFAULT NULL,
   `periode` varchar(128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -179,30 +225,25 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`nis`, `student_name`, `class`, `periode`) VALUES
-('128945', 'Bagus Pribadi', '12-A', '2021-2022'),
-('146516', 'bryand', '10-B', '2021-2022'),
-('164131', 'ansori', '10-A', '2021-2022'),
-('164528', 'Bunga Lestari', '11-A', '2021-2022'),
-('164586', 'Sarah', '10-C', '2021-2022'),
-('185625', 'Diah Pitaloka', '11-A', '2021-2022'),
-('451578', 'Surya Putra', '12-A', '2021-2022'),
-('645186', 'Jane', '10-C', '2021-2022');
+INSERT INTO `student` (`nis`, `student_name`, `jenis_kelamin`, `class`, `periode`) VALUES
+('124578', 'Nishimiya', 'P', '10-B', '2021-2022');
 
 --
 -- Triggers `student`
 --
 DELIMITER $$
 CREATE TRIGGER `add_student` AFTER INSERT ON `student` FOR EACH ROW begin
-			insert into spp values ('235689','2022-05-25','250000','Belum Lunas');
+			insert into spp values ('235689','2022-05-26','250000','Belum Lunas');
+			insert into current_spp values ('235689','2022-05-26','Belum Lunas');
 			insert into log_student values ('','235689',null,null,null,null,null,new.student_name,new.class,new.periode,null,null,'Memasukkan Data Siswa',now(),'Afila Ansori');
 			end
 $$
 DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `delete_student` AFTER DELETE ON `student` FOR EACH ROW begin
-			insert into log_student values ('','235689',old.student_name,old.class,old.periode,null,null,null,null,null,null,null,'Menghapus Data Siswa',now(),'Afila Ansori');
-			end
+		delete from spp where nis='124578';
+		insert into log_student values ('','',old.student_name,old.class,old.periode,null,null,null,null,null,null,null,'Menghapus Data Siswa',now(),'Afila Ansori');
+		end
 $$
 DELIMITER ;
 DELIMITER $$
@@ -211,19 +252,6 @@ CREATE TRIGGER `update_student` AFTER UPDATE ON `student` FOR EACH ROW begin
 			end
 $$
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaction`
---
-
-CREATE TABLE `transaction` (
-  `id` int(11) NOT NULL,
-  `admin` varchar(255) DEFAULT NULL,
-  `nis` varchar(128) DEFAULT NULL,
-  `tanggal` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -243,9 +271,7 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id`, `admin`, `nis`, `tanggal`) VALUES
-(4, 'Afila Ansori', '164528', '2022-05-25'),
-(5, 'Afila Ansori', '164586', '2022-05-25'),
-(6, 'Afila Ansori', '164586', '2022-05-25');
+(19, 'Afila Ansori', '124578', '2022-05-30');
 
 -- --------------------------------------------------------
 
@@ -265,11 +291,32 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`name`, `role`, `username`, `password`) VALUES
+('a', 'admin', 'a', 'a'),
 ('Afila Ansori', 'admin', 'alter0z', 'password'),
 ('John', 'admin', 'j0hn', 'root'),
-('John Doe', 'walikelas', 'j0hn3', 'john123'),
-('Larry Page', 'admin', 'pagelarry3', '123456789'),
 ('Jeanne', 'walikelas', 'root', 'root');
+
+--
+-- Triggers `user`
+--
+DELIMITER $$
+CREATE TRIGGER `add_user` AFTER INSERT ON `user` FOR EACH ROW begin
+			insert into log_user values ('',null,null,null,null,new.name,new.role,new.username,new.password,'Memasukkan Data User',now(),'Afila Ansori');
+			end
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `del_user` AFTER DELETE ON `user` FOR EACH ROW begin
+		insert into log_user values ('',old.name,old.role,old.username,old.password,null,null,null,null,'Menghapus Data User',now(),'Afila Ansori');
+		end
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_user` AFTER UPDATE ON `user` FOR EACH ROW begin
+			insert into log_user values ('',old.name,old.role,old.username,old.password,new.name,new.role,new.username,new.password,'Merubah Data User',now(),'Afila Ansori');
+			end
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -288,14 +335,33 @@ CREATE TABLE `wclass` (
 
 INSERT INTO `wclass` (`class`, `fullname`) VALUES
 ('10-A', 'Larry Page'),
-('10-B', 'Johns'),
-('10-C', 'Jeanne'),
-('11-A', 'Lia Mustika'),
-('12-A', 'Barron Jeggaer');
+('10-B', 'Barron Jeggaer');
+
+--
+-- Triggers `wclass`
+--
+DELIMITER $$
+CREATE TRIGGER `add_wclass` AFTER DELETE ON `wclass` FOR EACH ROW begin
+		insert into log_wclass values ('',old.fullname,old.class,null,null,'Menghapus Data Walikelas',now(),'Afila Ansori');
+		end
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `edit_wclass` AFTER UPDATE ON `wclass` FOR EACH ROW begin
+			insert into log_wclass values ('',old.fullname,old.class,new.fullname,new.class,'Merubah Data Walikelas',now(),'Afila Ansori');
+			end
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `current_spp`
+--
+ALTER TABLE `current_spp`
+  ADD UNIQUE KEY `nis` (`nis`);
 
 --
 -- Indexes for table `log_student`
@@ -329,13 +395,6 @@ ALTER TABLE `student`
   ADD KEY `class` (`class`);
 
 --
--- Indexes for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `nis` (`nis`);
-
---
 -- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
@@ -362,31 +421,25 @@ ALTER TABLE `wclass`
 -- AUTO_INCREMENT for table `log_student`
 --
 ALTER TABLE `log_student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `log_user`
 --
 ALTER TABLE `log_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `log_wclass`
 --
 ALTER TABLE `log_wclass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `transaction`
---
-ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
@@ -402,13 +455,8 @@ ALTER TABLE `spp`
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`class`) REFERENCES `wclass` (`class`);
-
---
--- Constraints for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`nis`) REFERENCES `student` (`nis`);
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`class`) REFERENCES `wclass` (`class`),
+  ADD CONSTRAINT `student_ibfk_2` FOREIGN KEY (`nis`) REFERENCES `current_spp` (`nis`);
 
 --
 -- Constraints for table `transaksi`
