@@ -3,12 +3,12 @@
 <div class="content-body" style="margin-top: 125px;">
   <div class="container-fluid">
   <?php 
-          if (isset($_SESSION['message']) == 'success') {
-            // success alert
-          } else if (isset($_SESSION['message']) == 'failed') {
-            // danger alert
-          }
-        ?>
+    if (isset($_SESSION['message']) == 'success') {
+      // success alert
+    } else if (isset($_SESSION['message']) == 'failed') {
+      // danger alert
+    }
+  ?>
     <!-- <div class="alert alert-success alert-dismissible fade show">
             <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>	
             <strong>Success!</strong> Message has been sent.
@@ -31,14 +31,13 @@
           <div class="modal-body">
             ...
           </div>
-          <from method="post" action="../functions/payment.php"></from>
+          <form method="post" action="../functions/payment.php">
             <div class="modal-footer">
               <input type="hidden" name="nis" id="payment-nis">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <!-- <button type="submit" class="btn btn-warning" name="pay">Bayar</button> -->
-              <button type="submit">test</button>
+              <button id="get-pay" type="submit" class="btn btn-warning" name="pay">Bayar</button>
             </div>
-          </from>
+          </form>
         </div>
       </div>
     </div>
@@ -57,7 +56,7 @@
       <div class="col-lg-12">
 				<div class="card bg-white p-2 m-3 shadow" style="border-radius: 16px;">
           <div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
-						<h4 class="card-title">Data SPP Belum Lunas</h4>
+						<h4 class="card-title">Data SPP Yang Belum Lunas</h4>
             <form class="row g-3 mt-2 mb-2" method="post" action="">
               <div class="col-2">
                 <input type="text" class="form-control" name="search" maxlength="6" placeholder="Cari NIS atau Nama" autocomplete="off">
@@ -91,7 +90,7 @@
                   include "../connection/connection.php";
 
                   if (isset($_POST['getSearch'])) {
-                    $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, d.* FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class right join current_spp as d on b.nis = d.nis where c.class in (a.class) and a.nis like '%$_POST[search]%' or a.student_name like '%$_POST[search]%' and d.current_status = 'Belum Lunas' and month(d.current_duedate) = month(now()) order by a.student_name asc");
+                    $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and a.nis like '%$_POST[search]%' or a.student_name like '%$_POST[search]%' and b.status = 'Belum Lunas' and month(b.duedate) = month(now()) order by a.student_name asc");
                     $no=1;
 
                     while($data = mysqli_fetch_array($getData)) {
@@ -113,7 +112,7 @@
                     }
 
                   } else {
-                    $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, d.* FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class right join current_spp as d on b.nis = d.nis where c.class in (a.class) and month(d.current_duedate) = month(now()) and d.current_status = 'Belum Lunas' order by a.student_name asc");
+                    $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and month(b.duedate) = month(now()) and b.status = 'Belum Lunas' order by a.student_name asc");
                     $no=1;
 
                     while($data = mysqli_fetch_array($getData)) {
@@ -148,7 +147,7 @@
       <div class="col-lg-12">
 				<div class="card bg-white p-2 m-3 shadow" style="border-radius: 16px;">
           <div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
-						<h4 class="card-title">Data SPP Keseluruhan</h4>
+						<h4 class="card-title">Data SPP Yang Sudah Lunas</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -172,7 +171,7 @@
                 <?php
                   include "../connection/connection.php";
 
-                  $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, d.* FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class right join current_spp as d on b.nis = d.nis where c.class in (a.class) and month(d.current_duedate) = month(now()) order by a.student_name asc");
+                  $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and month(b.duedate) = month(now()) order by a.student_name asc");
                   $no=1;
                   while($data = mysqli_fetch_array($getData)) {
                     $date = date('D, d M Y',strtotime($data['duedate']));
@@ -200,18 +199,5 @@
     </div>
   </div>
 </div>
-
-<!-- <script>
-// $('.delete-button').on('click', function (e) {
-// var id = $(this).attr('data-id');
-//  $('.confirm-delete').attr('data-id',id);
-
-// });
-// $(".confirm-delete").on('click', function (e) {
-//     var id = $(this).attr('data-id');
-//     console.log(id);
-//     location.href="../functions/payment.php?nis="+id;
-// });
-</script> -->
 
 <?php include "../footer/footer.php"; ?>

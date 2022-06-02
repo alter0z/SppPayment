@@ -3,15 +3,11 @@
 <?php
 	include "../connection/connection.php";
 
-		$dataSpp = mysqli_query($conn, "SELECT*from spp where nis = '$_GET[nis]'");
+	$getDataSpp = mysqli_query($conn, "SELECT*from spp where nis = '$_GET[nis]'");
+	$dataSpp = mysqli_fetch_array($getDataSpp);
 
 	$getData = mysqli_query($conn, "SELECT * FROM student WHERE nis='$_GET[nis]'");
 	$data = mysqli_fetch_array($getData);
-
-	// echo "<br><br><br<br><br>";
-
-	$getDataSppCurrent = mysqli_query($conn, "SELECT * FROM current_spp WHERE nis='$_GET[nis]'");
-	$dataSppCurrent = mysqli_fetch_array($getDataSppCurrent);
 ?>
 
 <div class="content-body" style="margin-top: 125px;">
@@ -92,15 +88,15 @@
                         </div>
 												<div class="mb-3 col-md-6">
 													<label class="form-label">Biaya</label>
-													<input type="text" name="sppcost" class="form-control" value="<?php while ($spp = mysqli_fetch_array($dataSpp)) {echo $spp['spp_cost'];} ?>" readonly />
+													<input type="text" name="sppcost" class="form-control" value="<?php echo $dataSpp['spp_cost']; ?>" readonly />
 												</div>
 												<div class="mb-3 col-md-6">
 													<label class="form-label">Jatuh Tempo</label>
-													<input type="date" name="duedate" class="form-control" value="<?php echo $dataSppCurrent['current_duedate']; ?>" />
+													<input type="date" name="duedate" class="form-control" value="<?php echo $dataSpp['duedate']; ?>" />
 												</div>
 												<div class="mb-3 col-md-6">
 													<label class="form-label " style="display: none;">Status</label>
-													<input type="text" name="status" style="display: none;" class="form-control" value="<?php echo $dataSppCurrent['current_status']; ?>" readonly />
+													<input type="text" name="status" style="display: none;" class="form-control" value="<?php echo $dataSpp['status']; ?>" readonly />
 												</div>
                       </div>
                       <button type="submit" class="btn btn-primary">Save</button>

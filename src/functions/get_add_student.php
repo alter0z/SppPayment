@@ -1,6 +1,8 @@
 <?php 
   include "../connection/connection.php";
 
+	session_start();
+
   if($_SERVER['REQUEST_METHOD']=='POST'){
 		$nis 	= $_POST['nis'];
 		$name 	= $_POST['studentname'];
@@ -16,7 +18,6 @@
 			for each row
 			begin
 			insert into spp values ('','$nis','$duedate','$cost','$status');
-			insert into current_spp values ('$nis','$duedate','$status');
 			insert into log_student values ('','$nis',null,null,null,null,null,new.student_name,new.class,new.periode,null,null,'Memasukkan Data Siswa',now(),'$_SESSION[fullname]');
 			end");
 
@@ -28,7 +29,8 @@
 			end");
 
 		if ($nis == '' || $name == '' || $class == '' || $duedate == '' || $gender == '') {
-			echo "Form belum lengkap...";
+			$_SESSION['message'] = 'empty';
+			header('location:../add/addstudent.php');
 		} else {
 
 			mysqli_query($conn, "set foreign_key_checks = 0");
@@ -38,7 +40,7 @@
 			if (!$save) {
 				$_SESSION['message'] = 'failed';
 				echo mysqli_error($conn);
-				echo "Penyimpanan data gagal..";
+				header('location:../add/addstudent.php');
 			} else {
 				$_SESSION['message'] = 'success';
 				header('location:../show/showdatastudent.php');

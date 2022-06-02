@@ -8,7 +8,6 @@
 		for each row
 		begin
 		delete from spp where nis='$_GET[nis]';
-		delete from current_spp where nis='$_GET[nis]'
 		insert into log_student values ('','$nis',old.student_name,old.class,old.periode,null,null,null,null,null,null,null,'Menghapus Data Siswa',now(),'$_SESSION[fullname]');
 		end");
 
