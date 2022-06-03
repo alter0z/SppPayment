@@ -1,7 +1,7 @@
 <?php 
   include "../connection/connection.php";
 
-	session_start();
+	// session_start();
 
   if($_SERVER['REQUEST_METHOD']=='POST'){
 		$nis 	= $_POST['nis'];
@@ -30,7 +30,8 @@
 
 		if ($nis == '' || $name == '' || $class == '' || $duedate == '' || $gender == '') {
 			$_SESSION['message'] = 'empty';
-			header('location:../add/addstudent.php');
+			echo "kosong";
+			// header('location:../add/addstudent.php');
 		} else {
 
 			mysqli_query($conn, "set foreign_key_checks = 0");
@@ -40,7 +41,8 @@
 			if (!$save) {
 				$_SESSION['message'] = 'failed';
 				echo mysqli_error($conn);
-				header('location:../add/addstudent.php');
+				echo "failed";
+				// header('location:../add/addstudent.php');
 			} else {
 				$_SESSION['message'] = 'success';
 				header('location:../show/showdatastudent.php');

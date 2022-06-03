@@ -38,7 +38,7 @@
                 </div>
                 <div class="card-body">
                   <div class="basic-form">
-                    <form method="post" action="../functions/get_add_student.php">
+                    <form method="post" action="">
                       <div class="row">
                         <div class="mb-3 col-md-6">
                           <label class="form-label">NIS</label>
@@ -97,5 +97,7 @@
           </div>
         </div>
       </div>
+
+<?php include "../functions/get_add_student.php" ?>
 
 <?php include "../footer/footer.php"; ?>
