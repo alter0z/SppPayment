@@ -11,18 +11,6 @@
 	</div>
 </div>
 
-<!-- <h3>Tagihan SPP Siswa</h3>
-<table border="1">
-	<tr>
-		<th>No</th>
-		<th>Nis</th>
-		<th>Nama</th>
-		<th>Kelas</th>
-		<th>Wali Kelas</th>
-		<th>status</th>
-		<th>Tanggal</th>
-		<th>Admin</th>
-	</tr> -->
 	<div class="row">
       <div class="col-lg-12">
 		<div class="card bg-white p-2 m-3 shadow" style="border-radius: 16px;">
@@ -38,6 +26,7 @@
                     <th><strong>NIS</strong></th>
                     <th><strong>Nama</strong></th>
                     <th><strong>Kelas</strong></th>
+                    <th><strong>Jenis Kelamin</strong></th>
                     <th><strong>Wali Kelas</strong></th>
                     <th><strong>Status</strong></th>
                     <th><strong>Tanggal</strong></th>
@@ -47,7 +36,7 @@
                 <tbody>
 				<?php
 					include "../connection/connection.php";
-					$sql = mysqli_query($conn, "SELECT a.*, b.*, c.*, d.* FROM transaksi as a inner join student as b on a.nis = b.nis right join current_spp as c on a.nis = c.nis right join wclass as d on b.class = d.class where d.class in (b.class)");
+					$sql = mysqli_query($conn, "SELECT a.*, b.*, c.* FROM transaksi as a join student as b on a.nis = b.nis join wclass as c on b.class = c.class");
 					echo mysqli_error($conn);
 					$no=1;
 					while($d=mysqli_fetch_array($sql)){
@@ -56,8 +45,9 @@
 					<td>$d[nis]</td>
 					<td>$d[student_name]</td>
 					<td>$d[class]</td>
+					<td>$d[jenis_kelamin]</td>
 					<td>$d[fullname]</td>
-					<td>$d[current_status]</td>
+					<td>$d[spp_status]</td>
 					<td>$d[tanggal]</td>
 					<td>$d[admin]</td>
 					</tr>";

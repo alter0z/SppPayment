@@ -16,19 +16,16 @@
 			end");
 
 		if ($name == '' || $class == '') {
-			echo "Form belum lengkap...";
+			header('location:../edit/editwclass.php?message=edit-wclass-empty');
 		} else {
 
       mysqli_query($conn, "SET FOREIGN_KEY_CHECKS=0");
       $update = mysqli_query($conn, "UPDATE wclass set fullname='$name', class='$class' where class='$_GET[class]'");
 
 			if (!$update) {
-				$_SESSION['message'] = 'failed';
-				echo mysqli_error($conn);
-				echo "Penyimpanan data gagal..";
+				header('location:../show/showdatawclass.php?message=edit-wclass-failed');
 			} else {
-				$_SESSION['message'] = 'success';
-				header('location:../show/showdatawclass.php');
+				header('location:../show/showdatawclass.php?message=edit-wclass-success');
 			}
 		}
 	}

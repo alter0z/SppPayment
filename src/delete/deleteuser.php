@@ -13,15 +13,12 @@
 			$delete = mysqli_query($conn, "DELETE FROM user WHERE username='$_POST[uname]'");
 			
 			if (!$delete) {
-				$_SESSION['message'] = 'failed';
-				echo "Hapus data gagal, atau data sedang digunakan di tabel lain...<br/>
-				<a href='../show/showdatauser.php'>Kembali</a>";	
+				header('location:../show/showdatauser.php?message=delete-user-failed');
 			}else{
-				$_SESSION['message'] = 'success';
-				header('location:../show/showdatauser.php');
+				header('location:../show/showdatauser.php?message=delete-user-success');
 			}
 		}
 	} else {
-		echo "Anda tidak memiliki akses ke halaman ini!!! <br> <a href='../index/admin.php'>Kembali</a>";
+		header('location:../show/showdatauser.php?message=delete-user-cant-access');
 	}
 ?>

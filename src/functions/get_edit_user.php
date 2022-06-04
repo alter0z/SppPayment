@@ -18,19 +18,15 @@
 		$password 	= $_POST['password'];
 
 		if ($name == '' || $username == '' || $role == '' || $password == '') {
-			echo "Form belum lengkap...";
+			header('location:../edit/edituser.php?message=edit-user-empty');
 		} else {
 
       $update = mysqli_query($conn, "UPDATE user set name='$name', role='$role', username='$username', password='$password' where username='$_GET[username]'");
 
-			session_start();
-
 			if (!$update) {
-				$_SESSION['message'] = 'failed';
-				echo "Penyimpanan data gagal..";
+				header('location:../show/showdatauser.php?message=edit-user-failed');
 			} else {
-				$_SESSION['message'] = 'success';
-				header('location:../show/showdatauser.php');
+				header('location:../show/showdatauser.php?message=edit-user-success');
 			}
 		}
 	}

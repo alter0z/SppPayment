@@ -79,4 +79,9 @@
   </div>
 </div>
 
+<!-- alert edit user -->
+<?php if (isset($_GET['message'])): ?>
+  <input type="hidden" id="user" value="<?php echo $_GET['message']; ?>"></input>
+<?php endif; ?>
+
 <?php include "../footer/footer.php" ?>

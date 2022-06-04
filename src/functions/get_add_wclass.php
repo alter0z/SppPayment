@@ -13,17 +13,15 @@
 			end");
     
     if ($class == '' || $name == ''){
-      echo "Form belum lengkap!!!";		
+      header('location:../add/addwclass.php?message=add-wclass-empty');		
     } else {
 
       $save = mysqli_query($conn, "INSERT INTO wclass VALUES ('$class','$name')");
       
       if(!$save){
-        $_SESSION['message'] = 'failed';
-        echo "Simpan data gagal!!!";
+        header('location:../show/showdatawclass.php?message=add-wclass-failed');
       }else{
-        $_SESSION['message'] = 'success';
-        header('location:../show/showdatawclass.php');
+        header('location:../show/showdatawclass.php?message=add-wclass-success');;
       }
     }
   }

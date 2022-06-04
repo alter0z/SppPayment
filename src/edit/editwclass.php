@@ -7,7 +7,7 @@
 	$data = mysqli_fetch_array($getData);
 ?>
 
-<div class="content-body" style="margin-top: 125px;">
+<div class="content-body" style="margin-top: 125px;" onload="wclassFun()">
   <div class="container-fluid">
 		<div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			<div class="card-body">
@@ -71,6 +71,10 @@
     </div>
   </div>
 </div>
-<?php include "../functions/get_edit_wclass.php" ?>
+
+<!-- edit wclass -->
+<?php if (isset($_GET['message'])): ?>
+  <input type="hidden" id="wclass" value="<?php echo $_GET['message']; ?>"></input>
+<?php endif; ?>
 
 <?php include "../footer/footer.php"; ?>

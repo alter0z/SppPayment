@@ -14,19 +14,17 @@
 			insert into log_user values ('',null,null,null,null,new.name,new.username,new.role,new.password,'Memasukkan Data User',now(),'$_SESSION[fullname]');
 			end");
     
-    if ($name == '' || $username == '' || $password == '' || $role == ''){
-      echo "Form belum lengkap!!!";		
+    if ($name == '' || $username == '' || $password == '' || $role == ''){	
+      header('location:../add/adduser.php?message=add-user-empty');
     } else {
 
       $save = mysqli_query($conn, "INSERT INTO user VALUES ('$name','$role','$username','$password')");
       
       if(!$save){
-        $_SESSION['message'] = 'failed';
         echo mysqli_error($conn);
-        echo "Simpan data gagal!!!";
+        header('location:../show/showdatauser.php?message=add-user-failed');
       }else{
-        $_SESSION['message'] = 'success';
-        header('location:../show/showdatauser.php');
+        header('location:../show/showdatauser.php?message=add-user-success');
       }
     }
   }
