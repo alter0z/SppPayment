@@ -20,6 +20,28 @@
             <strong>Error!</strong> Message sending failed.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
           </div> -->
+
+          <div class="modal fade" id="delete-wclass-modal" tabindex="-1" aria-labelledby="delete-wclass-modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="delete-wclass-modalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <form method="post" action="../delete/deletewclass.php">
+            <div class="modal-footer">
+              <input type="hidden" name="class" id="class">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id="get-delete-wclass" type="submit" class="btn btn-danger" name="delete-wclass">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
           <!-- page indicator -->
             <div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			        <div class="card-body">
@@ -54,14 +76,10 @@
 												$getData=mysqli_query($conn, "SELECT * FROM wclass ORDER BY class ASC");
 												$no=1;
 
-                        $getClass;
-                        $dataCount = 0;
-
 												while($data = mysqli_fetch_array($getData)){
-                          $getClass = $data['class'];
 													echo "<tr>
                           <td><strong>$no</strong></td>
-                          <td>$data[class]</td>
+                          <td class='class'>$data[class]</td>
                           <td>$data[fullname]</td>
                           <td>
                             <div class='dropdown'>
@@ -77,34 +95,13 @@
                               </button>
                               <div class='dropdown-menu shadow' style='border-radius: 16px;'>
                                 <a class='dropdown-item' href='../edit/editwclass.php?class=$data[class]'>Edit</a>
-                                <a class='dropdown-item' data-bs-toggle='modal' data-bs-target='#exampleModal'>Delete</a>
+                                <a class='dropdown-item delete-wclass'>Delete</a>
                               </div>
                             </div>
                           </td>
                         </tr>";
 													$no++;
-                          $dataCount = count($data);
 												}
-
-                        if ($dataCount > 0){
-                          echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                            <div class='modal-dialog'>
-                              <div class='modal-content'>
-                                <div class='modal-header'>
-                                  <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
-                                  <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                </div>
-                                <div class='modal-body'>
-                                  ...
-                                </div>
-                                <div class='modal-footer'>
-                                  <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                                  <a class='btn btn-primary' href='../delete/deletewclass.php?class=$getClass'>Save changes</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>";
-                        }
 											?>
                       </tbody>
                     </table>

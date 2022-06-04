@@ -21,6 +21,28 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"></button>
           </div> -->
 
+          <div class="modal fade" id="delete-user-modal" tabindex="-1" aria-labelledby="delete-user-modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="delete-user-modalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <form method="post" action="../delete/deleteuser.php">
+            <div class="modal-footer">
+              <input type="hidden" name="uname" id="username">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id="get-delete-user" type="submit" class="btn btn-danger" name="delete-user">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
          		<!-- page indicator -->
               <div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			          <div class="card-body">
@@ -60,11 +82,10 @@
                         $dataCount = 0;
 
 												while($data = mysqli_fetch_array($getData)){
-                          $getUsername = $data['username'];
 													echo "<tr>
                           <td><strong>$no</strong></td>
                           <td>$data[name]</td>
-                          <td>$data[username]</td>
+                          <td class='username'>$data[username]</td>
                           <td>$data[role]</td>
                           <td>
                             <div class='dropdown'>
@@ -80,34 +101,13 @@
                               </button>
                               <div class='dropdown-menu shadow' style='border-radius: 16px;'>
                                 <a class='dropdown-item' href='../edit/edituser.php?username=$data[username]'>Edit</a>
-                                <a class='dropdown-item' data-bs-toggle='modal' data-bs-target='#exampleModal'>Delete</a>
+                                <a class='dropdown-item delete-user'>Delete</a>
                               </div>
                             </div>
                           </td>
                         </tr>";
 													$no++;
-                          $dataCount = count($data);
 												}
-
-                        if ($dataCount > 0){
-                          echo "<div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                            <div class='modal-dialog'>
-                              <div class='modal-content'>
-                                <div class='modal-header'>
-                                  <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
-                                  <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                </div>
-                                <div class='modal-body'>
-                                  ...
-                                </div>
-                                <div class='modal-footer'>
-                                  <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
-                                  <a class='btn btn-primary' href='../delete/deleteuser.php?username=$getUsername'>Save changes</a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>";
-                        }
 											?>
                       </tbody>
                     </table>
