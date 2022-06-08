@@ -177,7 +177,7 @@
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Data user gagal dihapus!',
+                    text: 'Data walikelas gagal dihapus!',
                 })
             } else if (wclassMessage === 'delete-wclass-cant-access') {
                 Swal.fire(
@@ -189,58 +189,152 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Data user telah dihapus',
+                    title: 'Data walikelas telah dihapus',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        } else if (window.location.pathname == '/sppPayment/src/show/showdatastudent.php' ||
+            window.location.pathname == '/sppPayment/src/edit/editstudent.php' ||
+            window.location.pathname == '/sppPayment/src/add/addstudent.php') { // student
+            const wclassMessage = document.getElementById("stud").value;
+
+            // add
+            if (wclassMessage === 'add-stud-failed') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Data siswa gagal disimpan!',
+                })
+            } else if (wclassMessage === 'add-stud-empty') {
+                Swal.fire(
+                    'Warnig',
+                    'Masih ada data yang kosong',
+                    'info'
+                )
+            } else if (wclassMessage === 'add-stud-success') {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Data siswa berhasil disimpan, dan tagihan spp dapat dilihat pada menu data spp',
+                    showConfirmButton: true
+                })
+            } 
+            
+            // edit
+            if (wclassMessage === 'edit-stud-failed') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Data siswa gagal diedit!',
+                })
+            } else if (wclassMessage === 'edit-wclass-empty') {
+                Swal.fire(
+                    'Warnig',
+                    'Masih ada data yang kosong',
+                    'info'
+                )
+            } else if (wclassMessage === 'edit-stud-success') {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Data siswa telah diedit',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+
+            // delete
+            $('.delete-stud').click(function (e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Apakah Anda Yakin?',
+                    text: "Anda yakin akan menghapus data ini!. Menghapus siwa berarti menghapus tagihannya juga!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Hapus!'
+                    }).then((result) => {
+
+                    if (result.isConfirmed) {
+                        var getNis = $(this).closest('tr').find('.nis').text();
+                        $('#nis').val(getNis);
+                        document.getElementById("get-delete-stud").click();
+                    }
+                })
+            })
+
+            if (wclassMessage === 'delete-stud-failed') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Data siswa gagal dihapus!',
+                })
+            } else if (wclassMessage === 'delete-stud-cant-access') {
+                Swal.fire(
+                    'Warnig',
+                    'Anda tidak memiliki akses!',
+                    'info'
+                )
+            } else if (wclassMessage === 'delete-stud-success') {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Data siswa telah dihapus',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        } else if (window.location.pathname == '/sppPayment/src/show/showdataspp.php') { // spp
+            const message = document.getElementById("pay").value;
+
+            // pay
+            $('.pay-button').click(function (e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Apakah Anda Yakin?',
+                    text: "Anda yakin siswa ini membayar tagihan!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Proses!'
+                    }).then((result) => {
+
+                    if (result.isConfirmed) {
+                        var getNis = $(this).closest('tr').find('.getNis').text();
+                        $('#nis-pay').val(getNis);
+                        document.getElementById("get-pay").click();
+                    }
+                })
+            })
+
+            if (message === 'pay-failed') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Pembayaran gagal!',
+                })
+            } else if (message === 'pay-success') {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Siswa tersebut telah membayar',
                     showConfirmButton: false,
                     timer: 2000
                 })
             }
         }
-        
-
-        // $('.pay-button').click(function (e) {
-        //     e.preventDefault();
-
-        //     const href = $(this).attr('href');
-
-        //     Swal.fire({
-        //         title: 'Yakin?',
-        //         text: "Anda yakin siswa ini membayar tagihan!",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Ya, Bayar!'
-        //     }).then((result) => {
-        //         if (result.value) {
-        //             document.location.href = href;
-        //             var message = document.getElementById('message').value;
-
-        //             if (message === 'pay success') {
-        //                 Swal.fire({
-        //                     position: 'center',
-        //                     icon: 'success',
-        //                     title: 'Siswa tersebut telah membayar',
-        //                     showConfirmButton: false,
-        //                     timer: 3000
-        //                 })
-        //             } else if (message === 'pay failed') {
-        //                 Swal.fire({
-        //                     icon: 'error',
-        //                     title: 'Oops...',
-        //                     text: 'Pembayaran gagal!',
-        //                     footer: '<a href="">Why do I have this issue?</a>'
-        //                 })
-        //             }
-        //         }
-        //     })
-        // });
     });
 </script>
 <div class="card-body text-center" style="margin-top: 300px;">
     <footer>
         <footer>
         <p>Author: ©Shirohaku Dev Team-2022</p>
-                <p><i class="fa-solid fa-envelope"></i> Contact us: <a href="mailto:shirohakudteam@gmail.com">shirohakudteam@gmail.com</a></p>
+            <p><i class="fa-solid fa-envelope"></i> Contact us: <a href="mailto:shirohakudteam@gmail.com">shirohakudteam@gmail.com</a></p>
         </footer>
     </footer>
 </div>

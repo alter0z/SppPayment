@@ -74,6 +74,7 @@
                       </div>
                       <button type="submit" class="btn btn-primary">Save</button>
                     </form>
+                    <?php include "../functions/get_add_student.php" ?>
                   </div>
                 </div>
               </div>
@@ -82,6 +83,9 @@
         </div>
       </div>
 
-<?php include "../functions/get_add_student.php" ?>
+<!-- alert add student -->
+<?php if (isset($_GET['message'])): ?>
+  <input type="hidden" id="stud" value="<?php echo $_GET['message']; ?>"></input>
+<?php endif; ?>
 
 <?php include "../footer/footer.php"; ?>

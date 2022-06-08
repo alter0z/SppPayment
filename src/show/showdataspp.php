@@ -57,7 +57,7 @@
                       $date = date('D, d M Y',strtotime($data['duedate']));
                       echo "<tr>
                       <td><strong>$no</strong></td>
-                      <td>$data[nis]</td>
+                      <td class='getNis'>$data[nis]</td>
                       <td>$data[student_name]</td>
                       <td>$data[jenis_kelamin]</td>
                       <td>$data[class]</td>
@@ -66,11 +66,10 @@
                       <td>$data[spp_cost]</td>
                       <td>$date</td>
                       <td>$data[status]</td>
-                      <td><a class='btn btn-primary pay-button' href='../functions/payment.php?nis=$data[nis]'>Bayar</a></td>
+                      <td><a class='btn btn-primary pay-button'>Bayar</a></td>
                       </tr>";
                       $no++;
                     }
-
                   } else {
                     $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and month(b.duedate) = month(now()) and b.status = 'Belum Lunas' order by a.student_name asc");
                     $no=1;
@@ -79,7 +78,7 @@
                       $date = date('D, d M Y',strtotime($data['duedate']));
                       echo "<tr>
                       <td><strong>$no</strong></td>
-                      <td class='stud-nis'>$data[nis]</td>
+                      <td class='getNis'>$data[nis]</td>
                       <td>$data[student_name]</td>
                       <td>$data[jenis_kelamin]</td>
                       <td>$data[class]</td>
@@ -88,7 +87,7 @@
                       <td>$data[spp_cost]</td>
                       <td>$date</td>
                       <td>$data[status]</td>
-                      <td><a class='btn btn-primary pay-button' href='../functions/payment.php?nis=$data[nis]'>Bayar</a></td>
+                      <td><a class='btn btn-primary pay-button'>Bayar</a></td>
                       </tr>";
                       $no++;
                       }
@@ -105,6 +104,20 @@
 </div>
 
 <!-- get pay -->
-<?php echo "<input type='hidden' value='$_SESSION[message]' id='message'>" ?>
-       
+<?php if (isset($_GET['message'])): ?>
+  <input type="hidden" id="pay" value="<?php echo $_GET['message']; ?>"></input>
+<?php endif; ?>
+
+<form method="post" action="https://kusonime.com/">
+  <input type="hidden" name="nis" id="nis-pay" value="475869">
+  <button type="submit" style="display: none;">Pay</button>
+</form>
+
+<form method="post" action="../functions/payment.php">
+  <input type="hidden" name="nis" id="nis-pay" value="475869">
+  <button type="submit" id="get-pay" name="pay" style="display: none;">Pay</button>
+</form>
+
 <?php include "../footer/footer.php"; ?>
+
+<!-- style="display: none;" ../functions/payment.php-->

@@ -110,4 +110,9 @@
   </div>
 </div>
 
+<!-- alert edit student -->
+<?php if (isset($_GET['message'])): ?>
+  <input type="hidden" id="stud" value="<?php echo $_GET['message']; ?>"></input>
+<?php endif; ?>
+
 <?php include "../footer/footer.php" ?>

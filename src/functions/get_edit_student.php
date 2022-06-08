@@ -29,20 +29,16 @@
 			end");
 
 		if ($nis == '' || $name == '' || $class == '' || $duedate == '') {
-			echo "Form belum lengkap...";
+			header('location:../add/addtudent.php?message=edit-stud-empty');
 		} else {
 
       mysqli_query($conn, "SET FOREIGN_KEY_CHECKS=0");
       $update = mysqli_query($conn, "UPDATE student set nis='$nis', student_name='$name', class='$class', periode='$periode' where nis='$_GET[nis]'");
 
 			if (!$update) {
-				$_SESSION['message'] = 'failed';
-				echo mysqli_error($conn);
-				echo "Penyimpanan data gagal..";
+				header('location:../show/showdatastudent.php?message=edit-stud-failed');	
 			} else {
-				// mysqli_query($conn, "delete from log_student where id = (select id from log_student where status = 'Merubah Data Siswa' order by id desc limit 1)");
-				$_SESSION['message'] = 'success';
-				header('location:../show/showdatastudent.php');
+				header('location:../show/showdatastudent.php?message=edit-stud-success');
 			}
 		}
 	}

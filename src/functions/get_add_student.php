@@ -29,9 +29,7 @@
 			end");
 
 		if ($nis == '' || $name == '' || $class == '' || $duedate == '' || $gender == '') {
-			$_SESSION['message'] = 'empty';
-			echo "kosong";
-			// header('location:../add/addstudent.php');
+			header('location:../add/addtudent.php?message=add-stud-empty');
 		} else {
 
 			mysqli_query($conn, "set foreign_key_checks = 0");
@@ -39,13 +37,9 @@
 			$save = mysqli_query($conn, "INSERT into student values ('$nis','$name','$gender','$class','$periode')");	
 
 			if (!$save) {
-				$_SESSION['message'] = 'failed';
-				echo mysqli_error($conn);
-				echo "failed";
-				// header('location:../add/addstudent.php');
+				header('location:../show/showdatastudent.php?message=add-stud-failed');
 			} else {
-				$_SESSION['message'] = 'success';
-				header('location:../show/showdatastudent.php');
+				header('location:../show/showdatastudent.php?message=add-stud-success');
 			}
 		}
 	}
