@@ -2,14 +2,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://kit.fontawesome.com/3a61d8c882.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <!-- <script src="https://https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> -->
 <script>
     $(document).ready(function () {
-
+        console.log(window.location.href);
         if (window.location.pathname == '/sppPayment/src/show/showdatauser.php' ||
             window.location.pathname == '/sppPayment/src/edit/edituser.php' ||
             window.location.pathname == '/sppPayment/src/add/adduser.php') { // user
             const userMessage = document.getElementById("user").value;
+            $('#tableuser').DataTable();
 
             // add
             if (userMessage === 'add-user-failed') {
@@ -327,6 +331,17 @@
                     timer: 2000
                 })
             }
+            //data table log
+        } else if (window.location.pathname=='/sppPayment/src/transaction/transaksi.php') {
+            $('#logadduser').DataTable();
+            $('#logdeluser').DataTable();
+            $('#logedituser').DataTable();
+            $('#logaddwclass').DataTable();
+            $('#logdelwclass').DataTable();
+            $('#logeditwclass').DataTable();
+            $('#logaddstudent').DataTable();
+            $('#logdelstudent').DataTable();
+            $('#logeditstudent').DataTable();
         }
     });
 </script>
