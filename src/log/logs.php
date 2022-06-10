@@ -177,10 +177,11 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-              <table id="logaddstudent" class="table table-responsive-md">
+              <table id="log-add-student" class="table table-responsive-md">
                 <thead>
                   <tr>
                     <th style="width: 80px"><strong>#</strong></th>
+                    <th><strong>NIS</strong></th>
                     <th><strong>Nama</strong></th>
                     <th><strong>Kelas</strong></th>
                     <th><strong>Tahun Ajaran</strong></th>
@@ -201,9 +202,11 @@
 									// $date = date('D, d M Y',strtotime($d['date']));
 									echo "<tr>
 										<td>$no</td>
+										<td>$d[nis]</td>
 										<td>$d[new_name]</td>
 										<td>$d[new_class]</td>
 										<td>$d[new_period]</td>
+										<td>$d[new_duedate]</td>
 										<td>$d[new_spp_cost]</td>
 										<td>$d[status]</td>
 										<td>$d[tanggal]</td>
@@ -226,10 +229,11 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table id="logdelstudent" class="table table-responsive-md">
+								<table id="log-del-student" class="table table-responsive-md">
 									<thead>
 										<tr>
 											<th style="width: 80px"><strong>#</strong></th>
+											<th><strong>NIS</strong></th>
 											<th><strong>Nama</strong></th>
 											<th><strong>Kelas</strong></th>
 											<th><strong>Tahun Ajaran</strong></th>
@@ -250,9 +254,11 @@
 											// $date = date('D, d M Y',strtotime($d['date']));
 											echo "<tr>
 												<td>$no</td>
+												<td>$d[nis]</td>
 												<td>$d[old_name]</td>
 												<td>$d[old_class]</td>
 												<td>$d[old_period]</td>
+												<td>$d[old_duedate]</td>
 												<td>$d[old_spp_cost]</td>
 												<td>$d[status]</td>
 												<td>$d[tanggal]</td>
@@ -277,10 +283,11 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table id="logeditstudent" class="table table-responsive-md">
+							<table id="log-edit-student" class="table table-responsive-md">
 								<thead>
 									<tr>
 										<th style="width: 80px"><strong>#</strong></th>
+										<th><strong>NIS</strong></th>
 										<th><strong>Nama Lama</strong></th>
 										<th><strong>Nama Baru</strong></th>
 										<th><strong>Kelas Lama</strong></th>
@@ -306,6 +313,7 @@
 										// $date = date('D, d M Y',strtotime($d['date']));
 										echo "<tr>
 										<td>$no</td>
+											<td>$d[nis]</td>
 											<td>$d[old_name]</td>
 											<td>$d[new_name]</td>
 											<td>$d[old_class]</td>

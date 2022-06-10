@@ -13,19 +13,19 @@
 		$duedate = $_POST['duedate'];
 		$status = $_POST['status'];
 
+		// mysqli_query($conn, "create or replace trigger add_spp
+		// 	after insert on spp
+		// 	for each row
+		// 	begin
+		// 	update log_student set new_spp_cost = new.spp_cost, new_duedate = new.duedate where nis = '$nis';
+		// 	end");
+
 		mysqli_query($conn, "create or replace trigger add_student
 			after insert on student
 			for each row
 			begin
 			insert into spp values ('','$nis','$duedate','$cost','$status');
-			insert into log_student values ('','$nis',null,null,null,null,null,new.student_name,new.class,new.periode,null,null,'Memasukkan Data Siswa',now(),'$_SESSION[fullname]');
-			end");
-
-			mysqli_query($conn, "create or replace trigger add_spp
-			after insert on spp
-			for each row
-			begin
-			update log_student set new_spp_cost = new.spp_cost, new_duedate = new.duedate where nis = '$nis';
+			insert into log_student values ('','$nis',null,null,null,null,null,new.student_name,new.class,new.periode,'$duedate','$cost','Memasukkan Data Siswa',now(),'$_SESSION[fullname]');
 			end");
 
 		if ($nis == '' || $name == '' || $class == '' || $duedate == '' || $gender == '') {

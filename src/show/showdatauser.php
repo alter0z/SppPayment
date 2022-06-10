@@ -18,7 +18,7 @@
                 <div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
 									<a href="../add/adduser.php" class="btn btn-primary d-sm-inline-block d-none" style="background-color: #2196f3;">Add Data</a>
                 </div>
-                <div >
+                <div class="card-body">
                   <div class="table-responsive">
                     <table id="tableuser" class="table table-responsive-md">
                       <thead>

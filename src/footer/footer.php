@@ -8,7 +8,7 @@
 <!-- <script src="https://https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> -->
 <script>
     $(document).ready(function () {
-        console.log(window.location.href);
+
         if (window.location.pathname == '/sppPayment/src/show/showdatauser.php' ||
             window.location.pathname == '/sppPayment/src/edit/edituser.php' ||
             window.location.pathname == '/sppPayment/src/add/adduser.php') { // user
@@ -331,17 +331,17 @@
                     timer: 2000
                 })
             }
-            //data table log
-        } else if (window.location.pathname=='/sppPayment/src/transaction/transaksi.php') {
+            
+        } else if (window.location.pathname == '/sppPayment/src/log/logs.php') { //data table log
             $('#logadduser').DataTable();
             $('#logdeluser').DataTable();
             $('#logedituser').DataTable();
             $('#logaddwclass').DataTable();
             $('#logdelwclass').DataTable();
             $('#logeditwclass').DataTable();
-            $('#logaddstudent').DataTable();
-            $('#logdelstudent').DataTable();
-            $('#logeditstudent').DataTable();
+            $('#log-add-student').DataTable();
+            $('#log-del-student').DataTable();
+            $('#log-edit-student').DataTable();
         }
     });
 </script>
