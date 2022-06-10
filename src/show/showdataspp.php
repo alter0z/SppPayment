@@ -17,18 +17,10 @@
 				<div class="card bg-white p-2 m-3 shadow" style="border-radius: 16px;">
           <div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
 						<h4 class="card-title">Data SPP Yang Belum Lunas</h4>
-            <form class="row g-3 mt-2 mb-2" method="post" action="">
-              <div class="col-2">
-                <input type="text" class="form-control" name="search" maxlength="6" placeholder="Cari NIS atau Nama" autocomplete="off">
-              </div>
-              <div class="col-4">
-                <button type="submit" class="btn btn-primary" name="getSearch">Search</button>
-              </div>
-            </from>
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-responsive-md">
+              <table id="spptable" class="table table-responsive-md">
                 <thead>
                   <tr>
                     <th style="width: 80px"><strong>#</strong></th>

@@ -16,11 +16,27 @@
             <div class="col-lg-12">
               <div class="card bg-white p-2 m-3 shadow" style="border-radius: 16px;">
                 <div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
-									<a href="../add/addwclass.php" class="btn btn-primary d-sm-inline-block d-none" style="background-color: #2196f3;">Add Data</a>
+                  <div class="mb-3">
+                    <div class="row">
+                      <div class="col-8">
+                      <a href="../add/addwclass.php" class="btn btn-primary d-sm-inline-block d-none" style="background-color: #2196f3;">Add Data</a>
+                      </div>
+                      <div class="col-3">
+                        <form method="POST" action="excelUpload.php" enctype="multipart/form-data">
+                          <div class="form-group">
+                            <input class="form-control" type="file" id="formFile" name="file">
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col">
+                        <button type="button" class="btn btn-success">Import</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table table-responsive-md">
+                    <table id="tablewclass" class="table table-responsive-md">
                       <thead>
                         <tr>
                           <th style="width: 80px"><strong>#</strong></th>

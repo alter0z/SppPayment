@@ -108,6 +108,7 @@
             window.location.pathname == '/sppPayment/src/edit/editwclass.php' ||
             window.location.pathname == '/sppPayment/src/add/addwclass.php') { // wclass
             const wclassMessage = document.getElementById("wclass").value;
+            $('#tablewclass').DataTable();
 
             // add
             if (wclassMessage === 'add-wclass-failed') {
@@ -202,6 +203,7 @@
             window.location.pathname == '/sppPayment/src/edit/editstudent.php' ||
             window.location.pathname == '/sppPayment/src/add/addstudent.php') { // student
             const wclassMessage = document.getElementById("stud").value;
+            $('#tablestud').DataTable();
 
             // add
             if (wclassMessage === 'add-stud-failed') {
@@ -342,7 +344,12 @@
             $('#log-add-student').DataTable();
             $('#log-del-student').DataTable();
             $('#log-edit-student').DataTable();
+        } else if (window.location.pathname == '/sppPayment/src/transaction/transaksi.php') { //data table transaksi
+            $('#tabletrans').DataTable();
+        } else if (window.location.pathname == '/sppPayment/src/show/showdataspp.php') { //data table spp
+            $('#spptable').DataTable();
         }
+        console.log(window.location.pathname);
     });
 </script>
 <div class="card-body text-center" style="margin-top: 300px;">

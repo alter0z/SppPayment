@@ -19,7 +19,7 @@
 		  </div>
 		  <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-responsive-md">
+              <table id="tabletrans" class="table table-responsive-md">
                 <thead>
                   <tr>
                     <th style="width: 80px"><strong>#</strong></th>
