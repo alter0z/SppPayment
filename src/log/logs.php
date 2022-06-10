@@ -20,7 +20,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-              <table class="table table-responsive-md">
+              <table id="logadduser" class="table table-responsive-md">
                 <thead>
                   <tr>
                     <th style="width: 80px"><strong>#</strong></th>
@@ -68,7 +68,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-responsive-md">
+								<table id="logdeluser" class="table table-responsive-md">
 									<thead>
 										<tr>
 											<th style="width: 80px"><strong>#</strong></th>
@@ -118,7 +118,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table table-responsive-md">
+							<table id="logedituser" class="table table-responsive-md">
 								<thead>
 									<tr>
 										<th style="width: 80px"><strong>#</strong></th>
@@ -177,7 +177,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-              <table class="table table-responsive-md">
+              <table id="logaddstudent" class="table table-responsive-md">
                 <thead>
                   <tr>
                     <th style="width: 80px"><strong>#</strong></th>
@@ -226,7 +226,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-responsive-md">
+								<table id="logdelstudent" class="table table-responsive-md">
 									<thead>
 										<tr>
 											<th style="width: 80px"><strong>#</strong></th>
@@ -277,7 +277,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table table-responsive-md">
+							<table id="logeditstudent" class="table table-responsive-md">
 								<thead>
 									<tr>
 										<th style="width: 80px"><strong>#</strong></th>
@@ -340,7 +340,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-              <table class="table table-responsive-md">
+              <table id="logaddwclass" class="table table-responsive-md">
                 <thead>
                   <tr>
                     <th style="width: 80px"><strong>#</strong></th>
@@ -384,7 +384,7 @@
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table class="table table-responsive-md">
+								<table id="logdelwclass" class="table table-responsive-md">
 									<thead>
 										<tr>
 											<th style="width: 80px"><strong>#</strong></th>
@@ -430,7 +430,7 @@
 					</div>
 					<div class="card-body">
 						<div class="table-responsive">
-							<table class="table table-responsive-md">
+							<table id="logeditwclass" class="table table-responsive-md">
 								<thead>
 									<tr>
 										<th style="width: 80px"><strong>#</strong></th>
