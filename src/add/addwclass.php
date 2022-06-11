@@ -1,5 +1,5 @@
 <?php include "../header/header.php"; ?>
-<div class="content-body">
+<div class="content-body" style="margin-top: 125px;">
         <div class="container-fluid">
 				<div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			  <div class="card-body">
@@ -62,6 +62,9 @@
         </div>
       </div>
 
-
+<!-- alert add wclass -->
+<?php if (isset($_GET['message'])): ?>
+  <input type="hidden" id="wclass" value="<?php echo $_GET['message']; ?>"></input>
+<?php endif; ?>
 
 <?php include "../footer/footer.php"; ?>

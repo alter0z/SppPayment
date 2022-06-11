@@ -8,20 +8,24 @@
 		$name 	= $_POST['fullname'];
 		$class 	= $_POST['class'];
 
+		mysqli_query($conn, "create or replace trigger edit_wclass
+			after update on wclass
+			for each row
+			begin
+			insert into log_wclass values ('',old.fullname,old.class,new.fullname,new.class,'Merubah Data Walikelas',now(),'$_SESSION[fullname]');
+			end");
+
 		if ($name == '' || $class == '') {
-			echo "Form belum lengkap...";
+			header('location:../edit/editwclass.php?message=edit-wclass-empty');
 		} else {
+
       mysqli_query($conn, "SET FOREIGN_KEY_CHECKS=0");
       $update = mysqli_query($conn, "UPDATE wclass set fullname='$name', class='$class' where class='$_GET[class]'");
 
-			session_start();
-
 			if (!$update) {
-				$_SESSION['message'] = 'failed';
-				echo "Penyimpanan data gagal..";
+				header('location:../show/showdatawclass.php?message=edit-wclass-failed');
 			} else {
-				$_SESSION['message'] = 'success';
-				header('location:../show/showdatawclass.php');
+				header('location:../show/showdatawclass.php?message=edit-wclass-success');
 			}
 		}
 	}

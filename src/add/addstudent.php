@@ -1,7 +1,7 @@
 <?php include "../header/header.php"; ?>
 
 
-<div class="content-body">
+<div class="content-body" style="margin-top: 125px;">
   <div class="container-fluid">
 		<div class="card bg-white ms-3 me-3 shadow" style="border-radius: 16px;">
 			<div class="card-body">
@@ -16,7 +16,7 @@
           <!-- row -->
           <div class="row">
 					<div class="col-xl-12 col-lg-24">
-              <div class="card bg-white p-4 m-4 shadow" style="border-radius: 16px;">
+              <div class="card bg-white p-2 m-4 shadow" style="border-radius: 16px;">
                 <div class="card-header bg-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
                   <h4 class="card-title">Add Data Siswa</h4>
                 </div>
@@ -31,6 +31,14 @@
                         <div class="mb-3 col-md-6">
                           <label class="form-label">Nama</label>
                           <input type="text" name="studentname" class="form-control" placeholder="Nama Siswa ex: Ratna Permata" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+													<label class="form-label">Jenis Kelamin</label>
+                          <select id="inputState" name="gender" class="default-select form-control wide">
+														<option value="">Pilih Jenis Kelamin</option>
+														<option value="L">Laki-laki</option>
+														<option value="P">Perempuan</option>
+                          </select>
                         </div>
                         <div class="mb-3 col-md-6">
 													<label class="form-label">Kelas</label>
@@ -66,7 +74,7 @@
                       </div>
                       <button type="submit" class="btn btn-primary">Save</button>
                     </form>
-										<?php include "../functions/get_add_student.php"; ?>
+                    <?php include "../functions/get_add_student.php" ?>
                   </div>
                 </div>
               </div>
@@ -75,10 +83,9 @@
         </div>
       </div>
 
-
-
-
-
-<?php include "../functions/get_add_student.php"; ?>
+<!-- alert add student -->
+<?php if (isset($_GET['message'])): ?>
+  <input type="hidden" id="stud" value="<?php echo $_GET['message']; ?>"></input>
+<?php endif; ?>
 
 <?php include "../footer/footer.php"; ?>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
+  <?php
   // ob_start();
 	// session_start();
 	// if (!isset($_SESSION['login'])) {
@@ -20,20 +20,22 @@
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
+    <!-- toastr -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> -->
+
     <!-- icon tab -->
     <link rel="shortcut icon" type="image/png" href="../img/sp.png" />
 
     <!-- js -->
-    <!-- <script src="
-https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
-    </script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
     <!-- <script src="../js/script.js"></script> -->
 
     <title>Aplikasi Pembayaran SPP</title>
   </head>
-  <body style="background-color: #fafafa">
+  <body style="background-color: #fafafa; font-family: 'Poppins">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white mt-3 mb-3 me-4 ms-4 shadow p-2" style="border-radius: 13px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white mt-3 mb-3 me-4 ms-4 shadow p-2 fixed-top" style="border-radius: 13px">
       <div class="container-fluid">
         <!-- brand -->
         <a class="navbar-brand" href="#" style="color: #2196f3">
@@ -57,34 +59,28 @@ https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
               <a class="nav-link active" aria-current="page" href="../index/admin.php">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../show/showdatauser.php">Data User</a>
+              <a class="nav-link" href="../show/showdatauser.php?message=view">Data User</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../show/showdatawclass.php">Data Wali Kelas</a>
+              <a class="nav-link" href="../show/showdatawclass.php?message=view">Data Wali Kelas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../show/showdatastudent.php">Data Siswa</a>
+              <a class="nav-link" href="../show/showdatastudent.php?message=view">Data Siswa</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../show/showdataspp.php">Data SPP</a>
+              <a class="nav-link" href="../show/showdataspp.php?message=view">Data SPP</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="transaksi.php">Transaksi</a>
+              <a class="nav-link" href="../transaction/transaksi.php">Transaksi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../log/logs.php">Logs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../auth/logout.php">Logout</a>
             </li>
           </ul>
         </div>
-        <!-- <script>
-			$(document).ready(function () {
-  $("a").click(function () {
-    $("a.navclass.active").removeClass("active");
-    $(this).addClass("active");
-  });
-});
-
-		</script> -->
       </div>
     </nav>
   </body>
