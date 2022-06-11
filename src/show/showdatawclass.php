@@ -21,15 +21,16 @@
                       <div class="col-8">
                       <a href="../add/addwclass.php" class="btn btn-primary d-sm-inline-block d-none" style="background-color: #2196f3;">Add Data</a>
                       </div>
+                      <div class="col-1">
+                        <button type="button" class="btn btn-success" id="import-wclass">Import</button>
+                      </div>
                       <div class="col-3">
-                        <form method="POST" action="excelUpload.php" enctype="multipart/form-data">
+                        <form method="POST" action="../functions/wclassimport.php" enctype="multipart/form-data">
                           <div class="form-group">
                             <input class="form-control" type="file" id="formFile" name="file">
                           </div>
+                          <button type="submit" name="import-wclass" id="import-wclass-click" style="display: none;"></button>
                         </form>
-                      </div>
-                      <div class="col">
-                        <button type="button" class="btn btn-success">Import</button>
                       </div>
                     </div>
                   </div>

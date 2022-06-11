@@ -2,9 +2,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://kit.fontawesome.com/3a61d8c882.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+<!-- <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" /> -->
+<link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <!-- <script src="https://https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> -->
 <script>
     $(document).ready(function () {
@@ -131,7 +134,13 @@
                     showConfirmButton: false,
                     timer: 2000
                 })
-            } 
+            } else if (wclassMessage === 'add-wclass-dont') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Setiap kelas sudah memiliki walikelas',
+                })
+            }
             
             // edit
             if (wclassMessage === 'edit-wclass-failed') {
@@ -199,6 +208,12 @@
                     timer: 2000
                 })
             }
+
+            // import file
+            $('#import-wclass').click(function(e) {
+                e.preventDefault();
+                $('#import-wclass-click').click();
+            })
         } else if (window.location.pathname == '/sppPayment/src/show/showdatastudent.php' ||
             window.location.pathname == '/sppPayment/src/edit/editstudent.php' ||
             window.location.pathname == '/sppPayment/src/add/addstudent.php') { // student
@@ -293,6 +308,12 @@
                     timer: 2000
                 })
             }
+
+            // import file
+            $('#import-stud').click(function(e) {
+                e.preventDefault();
+                $('#import-stud-click').click();
+            })
         } else if (window.location.pathname == '/sppPayment/src/show/showdataspp.php') { // spp
             const message = document.getElementById("pay").value;
 
@@ -333,6 +354,8 @@
                     timer: 2000
                 })
             }
+
+            $('#spp').DataTable();
             
         } else if (window.location.pathname == '/sppPayment/src/log/logs.php') { //data table log
             $('#logadduser').DataTable();
@@ -346,10 +369,16 @@
             $('#log-edit-student').DataTable();
         } else if (window.location.pathname == '/sppPayment/src/transaction/transaksi.php') { //data table transaksi
             $('#tabletrans').DataTable();
-        } else if (window.location.pathname == '/sppPayment/src/show/showdataspp.php') { //data table spp
-            $('#spptable').DataTable();
+            
+            // print invoice
+            $('.print-button').click(function (e) {
+                e.preventDefault();
+            
+                var getNis = $(this).closest('tr').find('.getNis').text();
+                $('#nis-print').val(getNis);
+                $('#get-print').click();
+            })
         }
-        console.log(window.location.pathname);
     });
 </script>
 <div class="card-body text-center" style="margin-top: 300px;">

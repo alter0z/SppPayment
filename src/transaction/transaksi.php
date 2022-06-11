@@ -31,6 +31,7 @@
                     <th><strong>Status</strong></th>
                     <th><strong>Tanggal</strong></th>
                     <th><strong>Admin</strong></th>
+                    <th><strong>Faktur</strong></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -42,7 +43,7 @@
 					while($d=mysqli_fetch_array($sql)){
 					echo "<tr>
 					<td>$no</td>
-					<td>$d[nis]</td>
+					<td class='getNis'>$d[nis]</td>
 					<td>$d[student_name]</td>
 					<td>$d[class]</td>
 					<td>$d[jenis_kelamin]</td>
@@ -50,6 +51,7 @@
 					<td>$d[spp_status]</td>
 					<td>$d[tanggal]</td>
 					<td>$d[admin]</td>
+					<td><a class='btn btn-primary print-button'>Cetak</a></td>
 					</tr>";
 					$no++;
 					}
@@ -63,5 +65,29 @@
 	</div>
 </div>
 </div>
+
+<!-- modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<form method="post" action="../functions/printinvoice.php">
+  <input type="hidden" name="nis" id="nis-print">
+  <button type="submit" id="get-print" name="print" style="display: none;"></button>
+</form>
 
 <?php include "../footer/footer.php"; ?>

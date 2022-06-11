@@ -1,6 +1,12 @@
 <?php
   include "../connection/connection.php";
 
+  $count = mysqli_fetch_array(mysqli_query($conn, "SELECT count(*) from wclass"));
+
+  if ($count['count(*)'] >= 15) {
+    header('location:../show/showdatawclass.php?message=add-wclass-dont');
+  }
+
   if ($_SERVER['REQUEST_METHOD']=='POST'){
     $class = $_POST['class'];
     $name = $_POST['fullname'];
