@@ -5,7 +5,7 @@
 		header('location:../auth/login.php');
 	} else {
 		if (isset($_SESSION['login']) && $_SESSION['role'] == "walikelas") {
-			header('location:../index/wclass.php');
+			header('location:../show/showdatastudent.bywclass.php');
 		}
 	}
 ?>

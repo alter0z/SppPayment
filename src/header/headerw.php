@@ -51,6 +51,9 @@ https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="../index/admin.php">Dashboard</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../auth/logout.php">Logout</a>
+            </li>
           </ul>
         </div>
         <!-- <script>

@@ -31,7 +31,7 @@
 					$_SESSION['role'] = $role;
 					$_SESSION['wclass'] = $data['name'];
 
-					header('location:../index/wclass.php');
+					header('location:../show/showdatastudent.bywclass.php');
 					die();
 					// echo $role;
 				}
