@@ -19,14 +19,17 @@
   $getDataStudent = mysqli_query($conn, "SELECT count(nis) as count from student");
   $dataStudent = mysqli_fetch_assoc($getDataStudent);
 
-  $getDataSpp = mysqli_query($conn, "SELECT count(nis) as count from spp");
+  $getDataSpp = mysqli_query($conn, "SELECT count(nis) as count from spp where month(duedate) = month(now())");
   $dataSpp = mysqli_fetch_assoc($getDataSpp);
   
-  $getPaid = mysqli_query($conn, "SELECT count(nis) as count from current_spp where current_status='Lunas'");
+  $getPaid = mysqli_query($conn, "SELECT count(a.nis) as count from transaksi as a join spp as b on a.nis = b.nis where a.spp_status='Lunas' and month(b.duedate) = month(date_add(now(),interval 1 month))");
   $dataPaid = mysqli_fetch_assoc($getPaid);
   
-  $getUnpaid = mysqli_query($conn, "SELECT count(nis) as count from current_spp where current_status='Belum Lunas'");
+  $getUnpaid = mysqli_query($conn, "SELECT count(nis) as count from spp where status='Belum Lunas' and month(duedate) = month(now())");
   $dataUnpaid = mysqli_fetch_assoc($getUnpaid);
+
+  $getDataTrans = mysqli_query($conn, "SELECT count(nis) as count from transaksi");
+  $dataTrans = mysqli_fetch_assoc($getDataTrans);
 ?>
 
 <div class="container-fluid ps-4 pe-4" style="margin-top: 125px;">
@@ -114,13 +117,18 @@
             <!-- card data transaksi -->
             <div class="card bg-warning bg-gradient p-3 ms-2 me-2 mt-2 mb-4 opacity-75" style="border-radius: 26px">
                 <div class="card-body">
-                    <h2 class="text-white"><?php echo '0';?></h2>
+                    <h2 class="text-white"><?php echo $dataTrans['count'];?></h2>
                     <span class="text-white fs-18">Total Transaksi</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- alert login -->
+<?php if (isset($_GET['message'])): ?>
+    <input type="hidden" id="login" value="<?php echo $_GET['message']; ?>"></input>
+<?php endif; ?>
 
 <?php include "../footer/footer.php"; ?>
 

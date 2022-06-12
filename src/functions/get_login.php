@@ -7,7 +7,7 @@
     
 		
 		if ($username == '' || $password == '') {
-			echo "Form belum lengkap!!";
+			header('location:../auth/login.php?message=empty');
 		} else {
 			$login = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password' ");
 			$check = mysqli_num_rows($login);
@@ -22,7 +22,7 @@
 					$_SESSION['username'] = $username;
 					$_SESSION['role'] = $data['role'];
 
-					header('location:../index/admin.php');
+					header('location:../index/admin.php?message=success');
 					die();
 					// echo $role;
 				} else if ($data['role'] == "walikelas") {
@@ -31,12 +31,11 @@
 					$_SESSION['role'] = $data['role'];
 					$_SESSION['wclass'] = $data['name'];
 
-					header('location:../show/showdatastudent.bywclass.php');
+					header('location:../show/showdatastudent.bywclass.php?message=success');
 					die();
-					// echo $role;
 				}
 			} else {
-				echo "Username dan Password anda Salah!!!";
+				header('location:../auth/login.php?message=failed');
 			}
 		}
 	}

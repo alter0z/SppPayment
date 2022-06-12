@@ -55,7 +55,6 @@
 														?>
                           </select>
                         </div>
-
                         <div class="mb-3 col-md-6">
 													<label class="form-label">Tahun Ajaran</label>
                           <select id="inputState" name="periode" class="default-select form-control wide">

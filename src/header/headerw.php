@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['login'])) {
-		header('location:../auth/login.php');
+		header('location:../auth/login.php?message=view');
 	} /*else if (isset($_SESSION['login']) && isset($_SESSION['role']) == "admin") {
 		header('location:../index/admin.php');
 	}*/
@@ -49,7 +49,7 @@ https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="../index/admin.php">Dashboard</a>
+              <a class="nav-link active" aria-current="page" href="../index/admin.php?message=view">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../auth/logout.php">Logout</a>

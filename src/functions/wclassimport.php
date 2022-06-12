@@ -5,7 +5,7 @@
 
   session_start();
 
-  if (isset($_POST['import-wclass'])) {
+  if (isset($_POST['import-wclass']) && !$_FILES['file']['size'] == 0) {
     // $mimes = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.oasis.opendocument.spreadsheet'];
 
     // if (in_array($_FILES["file"]["type"],$mimes)) {
@@ -39,9 +39,9 @@
           echo mysqli_error($conn);
 
           if (!$isUploaded) {
-            header('location:../show/showdatawclass.php?message=add-wclass-failed');
+            header('location:../show/showdatawclass.php?message=import-wclass-failed');
           } else {
-            header('location:../show/showdatawclass.php?message=add-wclass-success');
+            header('location:../show/showdatawclass.php?message=import-wclass-success');
           }
         }
       }
@@ -49,5 +49,7 @@
     // } else {
     //   echo "file not allowed";
     // }
+  } else {
+    header('location:../show/showdatawclass.php?message=import-wclass-empty');
   }
 ?>

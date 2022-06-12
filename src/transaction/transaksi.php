@@ -37,7 +37,7 @@
                 <tbody>
 				<?php
 					include "../connection/connection.php";
-					$sql = mysqli_query($conn, "SELECT a.*, b.*, c.* FROM transaksi as a join student as b on a.nis = b.nis join wclass as c on b.class = c.class");
+					$sql = mysqli_query($conn, "SELECT a.*, b.*, c.* FROM transaksi as a join student as b on a.nis = b.nis join wclass as c on b.class = c.class join spp as d on a.nis = d.nis where month(d.duedate) = month(date_add(now(),interval 1 month))");
 					echo mysqli_error($conn);
 					$no=1;
 					while($d=mysqli_fetch_array($sql)){

@@ -56,7 +56,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="../index/admin.php">Dashboard</a>
+              <a class="nav-link active" aria-current="page" href="../index/admin.php?message=view">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../show/showdatauser.php?message=view">Data User</a>

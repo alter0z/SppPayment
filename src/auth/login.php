@@ -57,6 +57,38 @@
         </div>
       </div>
     </div>
+
+    <!-- alert login -->
+    <?php if (isset($_GET['message'])): ?>
+      <input type="hidden" id="login" value="<?php echo $_GET['message']; ?>"></input>
+    <?php endif; ?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        const message = document.getElementById('login').value;
+
+        if (message === 'empty') {
+          Swal.fire(
+            'Warnig',
+            'Masukkan username dan password',
+            'info'
+          )
+        } else if (message === 'failed') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Username atau password salah!',
+          })
+        }
+      })
+    </script>
   </body>
 </html>

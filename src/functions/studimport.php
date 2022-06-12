@@ -5,7 +5,7 @@
 
   session_start();
 
-  if (isset($_POST['import-stud'])) {
+  if (isset($_POST['import-stud']) && !$_FILES['file']['size'] == 0) {
     // $mimes = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.oasis.opendocument.spreadsheet'];
 
     // if (in_array($_FILES["file"]["type"],$mimes)) {
@@ -56,10 +56,10 @@
 
           if (!$isUploaded) {
             mysqli_query($conn, "rollback");
-            header('location:../show/showdatastudent.php?message=add-stud-failed');
+            header('location:../show/showdatastudent.php?message=import-stud-failed');
           } else {
             mysqli_query($conn, "commit");
-            header('location:../show/showdatastudent.php?message=add-stud-success');
+            header('location:../show/showdatastudent.php?message=import-stud-success');
           }
         }
       }
@@ -67,5 +67,7 @@
     // } else {
     //   echo "file not allowed";
     // }
+  } else {
+    header('location:../show/showdatastudent.php?message=import-stud-empty');
   }
 ?>
