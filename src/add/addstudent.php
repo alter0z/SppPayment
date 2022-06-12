@@ -55,9 +55,14 @@
 														?>
                           </select>
                         </div>
-												<div class="mb-3 col-md-6">
-                          <label class="form-label">Tahun Ajaran</label>
-                          <input type="text" name="periode" class="form-control" value="2021-2022" readonly />
+                        <div class="mb-3 col-md-6">
+													<label class="form-label">Tahun Ajaran</label>
+                          <select id="inputState" name="periode" class="default-select form-control wide">
+														<option value="">Pilih Tahun Ajaran</option>
+														<option value="2020-2021">2020-2021</option>
+														<option value="2021-2022">2021-2022</option>
+														<option value="2022-2023">2022-2023</option>
+                          </select>
                         </div>
 												<div class="mb-3 col-md-6">
 													<label class="form-label">Biaya</label>

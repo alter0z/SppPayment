@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['login'])) {
-		header('location:../auth/login.php');
+		header('location:../auth/login.php?message=view');
 	} /*else if (isset($_SESSION['login']) && isset($_SESSION['role']) == "admin") {
 		header('location:../index/admin.php');
 	}*/
@@ -26,9 +26,9 @@ https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
 
     <title>Aplikasi Pembayaran SPP</title>
   </head>
-  <body style="background-color: #fafafa">
+  <body style="background-color: #fafafa; font-family: 'Poppins">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white mt-3 mb-3 me-4 ms-4 shadow p-2" style="border-radius: 13px">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white mt-3 mb-3 me-4 ms-4 shadow p-2 fixed-top" style="border-radius: 13px">
       <div class="container-fluid">
         <!-- brand -->
         <a class="navbar-brand" href="#" style="color: #2196f3">
@@ -49,7 +49,10 @@ https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="../index/admin.php">Dashboard</a>
+              <a class="nav-link active" aria-current="page" href="../index/admin.php?message=view">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../auth/logout.php">Logout</a>
             </li>
           </ul>
         </div>

@@ -44,20 +44,6 @@
                         <label class="mb-1"><strong>Password</strong></label>
                         <input type="password" name="password" class="form-control" />
                       </div>
-                      <div class="mb-3">
-                        <select class="form-select" name="role" aria-label="Default select example">
-                          <option value="" selected>Pilih Role</option>
-                          <?php
-														include "../connection/connection.php";
-														$getRole = mysqli_query($conn, "SELECT * from roles");
-														while($data = mysqli_fetch_array($getRole)) {
-													?>
-                          <option value="<?php echo $data['role']; ?>"><?php echo $data['role']; ?></option>
-                          <?php
-														}
-													?>
-                        </select>
-                      </div>
                       <div class="d-grid gap-2 mt-5">
                         <button style="border-radius: 10px; background-color: #2196f3; color: white" type="submit" class="btn p-2">Login</button>
                       </div>
@@ -71,6 +57,38 @@
         </div>
       </div>
     </div>
+
+    <!-- alert login -->
+    <?php if (isset($_GET['message'])): ?>
+      <input type="hidden" id="login" value="<?php echo $_GET['message']; ?>"></input>
+    <?php endif; ?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        const message = document.getElementById('login').value;
+
+        if (message === 'empty') {
+          Swal.fire(
+            'Warnig',
+            'Masukkan username dan password',
+            'info'
+          )
+        } else if (message === 'failed') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Username atau password salah!',
+          })
+        }
+      })
+    </script>
   </body>
 </html>

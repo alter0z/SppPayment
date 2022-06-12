@@ -37,23 +37,24 @@
                 <tbody>
 				<?php
 					include "../connection/connection.php";
-					$sql = mysqli_query($conn, "SELECT a.*, b.*, c.* FROM transaksi as a join student as b on a.nis = b.nis join wclass as c on b.class = c.class");
+					$sql = mysqli_query($conn, "SELECT a.*, b.*, c.* FROM transaksi as a join student as b on a.nis = b.nis join wclass as c on b.class = c.class join spp as d on a.nis = d.nis where month(d.duedate) = month(date_add(now(),interval 1 month))");
 					echo mysqli_error($conn);
 					$no=1;
 					while($d=mysqli_fetch_array($sql)){
-					echo "<tr>
-					<td>$no</td>
-					<td class='getNis'>$d[nis]</td>
-					<td>$d[student_name]</td>
-					<td>$d[class]</td>
-					<td>$d[jenis_kelamin]</td>
-					<td>$d[fullname]</td>
-					<td>$d[spp_status]</td>
-					<td>$d[tanggal]</td>
-					<td>$d[admin]</td>
-					<td><a class='btn btn-primary print-button'>Cetak</a></td>
-					</tr>";
-					$no++;
+						$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
+						echo "<tr>
+						<td>$no</td>
+						<td class='getNis'>$d[nis]</td>
+						<td>$d[student_name]</td>
+						<td>$d[class]</td>
+						<td>$d[jenis_kelamin]</td>
+						<td>$d[fullname]</td>
+						<td>$d[spp_status]</td>
+						<td>$date</td>
+						<td>$d[admin]</td>
+						<td><a class='btn btn-primary print-button'>Cetak</a></td>
+						</tr>";
+						$no++;
 					}
 				?>
 				</tbody>

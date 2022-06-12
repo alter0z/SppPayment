@@ -1,11 +1,21 @@
 <!-- Script JS bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<!-- sweet alert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- font awesome -->
 <script src="https://kit.fontawesome.com/3a61d8c882.js" crossorigin="anonymous"></script>
+
+<!-- data tables -->
 <!-- <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" /> -->
 <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<!-- data tables -->
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <!-- <script src="https://https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> -->
@@ -214,6 +224,29 @@
                 e.preventDefault();
                 $('#import-wclass-click').click();
             })
+
+            // import message
+            if (wclassMessage === 'import-wclass-failed') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Data walikelas gagal diimport!',
+                })
+            } else if (wclassMessage === 'import-wclass-empty') {
+                Swal.fire(
+                    'Warnig',
+                    'pilih file yang akan diimport',
+                    'info'
+                )
+            } else if (wclassMessage === 'import-wclass-success') {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Data walikelas berhasil diimport',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
         } else if (window.location.pathname == '/sppPayment/src/show/showdatastudent.php' ||
             window.location.pathname == '/sppPayment/src/edit/editstudent.php' ||
             window.location.pathname == '/sppPayment/src/add/addstudent.php') { // student
@@ -314,6 +347,29 @@
                 e.preventDefault();
                 $('#import-stud-click').click();
             })
+
+            // import message
+            if (wclassMessage === 'import-stud-failed') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Data siswa gagal diimport!',
+                })
+            } else if (wclassMessage === 'import-stud-empty') {
+                Swal.fire(
+                    'Warnig',
+                    'pilih file yang akan diimport',
+                    'info'
+                )
+            } else if (wclassMessage === 'import-stud-success') {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Data siswa berhasil diimport',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
         } else if (window.location.pathname == '/sppPayment/src/show/showdataspp.php') { // spp
             const message = document.getElementById("pay").value;
 
@@ -378,6 +434,33 @@
                 $('#nis-print').val(getNis);
                 $('#get-print').click();
             })
+        } else if (window.location.pathname == '/sppPayment/src/show/showdatastudent.bywclass.php') { //data table transaksi
+            $('#datatagsiswa').DataTable();
+            $('#datatranssiswa').DataTable();
+
+            const message = document.getElementById('login').value;
+
+            if (message === 'success') {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login berhasil',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
+        } else if (window.location.pathname == '/sppPayment/src/index/admin.php') {
+            const message = document.getElementById('login').value;
+
+            if (message === 'success') {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Login berhasil',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            }
         }
     });
 </script>

@@ -40,7 +40,7 @@
 									echo mysqli_error($conn);
 									$no=1;
 									while($d=mysqli_fetch_array($sql)){
-										// $date = date('D, d M Y',strtotime($d['date']));
+										$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 										echo "<tr>
 											<td>$no</td>
 											<td>$d[new_name]</td>
@@ -48,7 +48,7 @@
 											<td>$d[new_role]</td>
 											<td>$d[new_password]</td>
 											<td>$d[status]</td>
-											<td>$d[tanggal]</td>
+											<td>$date</td>
 											<td>$d[admin]</td>
 										</tr>";
 										$no++;
@@ -88,7 +88,7 @@
 										echo mysqli_error($conn);
 										$no=1;
 										while($d=mysqli_fetch_array($sql)){
-											// $date = date('D, d M Y',strtotime($d['date']));
+											$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 											echo "<tr>
 												<td>$no</td>
 												<td>$d[old_name]</td>
@@ -96,7 +96,7 @@
 												<td>$d[old_role]</td>
 												<td>$d[old_password]</td>
 												<td>$d[status]</td>
-												<td>$d[tanggal]</td>
+												<td>$date</td>
 												<td>$d[admin]</td>
 											</tr>";
 											$no++;
@@ -142,7 +142,7 @@
 									echo mysqli_error($conn);
 									$no=1;
 									while($d=mysqli_fetch_array($sql)){
-										// $date = date('D, d M Y',strtotime($d['date']));
+										$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 										echo "<tr>
 											<td>$no</td>
 											<td>$d[old_name]</td>
@@ -154,7 +154,7 @@
 											<td>$d[old_password]</td>
 											<td>$d[new_password]</td>
 											<td>$d[status]</td>
-											<td>$d[tanggal]</td>
+											<td>$date</td>
 											<td>$d[admin]</td>
 										</tr>";
 										$no++;
@@ -199,7 +199,7 @@
 								echo mysqli_error($conn);
 								$no=1;
 								while($d=mysqli_fetch_array($sql)){
-									// $date = date('D, d M Y',strtotime($d['date']));
+									$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 									echo "<tr>
 										<td>$no</td>
 										<td>$d[nis]</td>
@@ -209,7 +209,7 @@
 										<td>$d[new_duedate]</td>
 										<td>$d[new_spp_cost]</td>
 										<td>$d[status]</td>
-										<td>$d[tanggal]</td>
+										<td>$date</td>
 										<td>$d[admin]</td>
 									</tr>";
 									$no++;
@@ -251,7 +251,7 @@
 										echo mysqli_error($conn);
 										$no=1;
 										while($d=mysqli_fetch_array($sql)){
-											// $date = date('D, d M Y',strtotime($d['date']));
+											$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 											echo "<tr>
 												<td>$no</td>
 												<td>$d[nis]</td>
@@ -261,7 +261,7 @@
 												<td>$d[old_duedate]</td>
 												<td>$d[old_spp_cost]</td>
 												<td>$d[status]</td>
-												<td>$d[tanggal]</td>
+												<td>$date</td>
 												<td>$d[admin]</td>
 											</tr>";
 											$no++;
@@ -310,7 +310,7 @@
 									echo mysqli_error($conn);
 									$no=1;
 									while($d=mysqli_fetch_array($sql)){
-										// $date = date('D, d M Y',strtotime($d['date']));
+										$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 										echo "<tr>
 										<td>$no</td>
 											<td>$d[nis]</td>
@@ -325,7 +325,7 @@
 											<td>$d[old_spp_cost]</td>
 											<td>$d[new_spp_cost]</td>
 											<td>$d[status]</td>
-											<td>$d[tanggal]</td>
+											<td>$date</td>
 											<td>$d[admin]</td>
 										</tr>";
 										$no++;
@@ -366,13 +366,13 @@
 									echo mysqli_error($conn);
 									$no=1;
 									while($d=mysqli_fetch_array($sql)){
-										// $date = date('D, d M Y',strtotime($d['date']));
+										$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 										echo "<tr>
 											<td>$no</td>
 											<td>$d[new_name]</td>
 											<td>$d[new_class]</td>
 											<td>$d[status]</td>
-											<td>$d[tanggal]</td>
+											<td>$date</td>
 											<td>$d[admin]</td>
 										</tr>";
 										$no++;
@@ -410,13 +410,13 @@
 										echo mysqli_error($conn);
 										$no=1;
 										while($d=mysqli_fetch_array($sql)){
-											// $date = date('D, d M Y',strtotime($d['date']));
+											$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 											echo "<tr>
 												<td>$no</td>
 												<td>$d[old_name]</td>
 												<td>$d[old_class]</td>
 												<td>$d[status]</td>
-												<td>$d[tanggal]</td>
+												<td>$date</td>
 												<td>$d[admin]</td>
 											</tr>";
 											$no++;
@@ -458,7 +458,7 @@
 									echo mysqli_error($conn);
 									$no=1;
 									while($d=mysqli_fetch_array($sql)){
-										// $date = date('D, d M Y',strtotime($d['date']));
+										$date = date('D, d M Y h:i a',strtotime($d['tanggal']));
 										echo "<tr>
 											<td>$no</td>
 											<td>$d[old_name]</td>
@@ -466,7 +466,7 @@
 											<td>$d[old_class]</td>
 											<td>$d[new_class]</td>
 											<td>$d[status]</td>
-											<td>$d[tanggal]</td>
+											<td>$date</td>
 											<td>$d[admin]</td>
 										</tr>";
 										$no++;
