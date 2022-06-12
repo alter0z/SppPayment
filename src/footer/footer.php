@@ -378,6 +378,9 @@
                 $('#nis-print').val(getNis);
                 $('#get-print').click();
             })
+        } else if (window.location.pathname == '/sppPayment/src/show/showdatastudent.bywclass.php') { //data table transaksi
+            $('#datatagsiswa').DataTable();
+            $('#datatranssiswa').DataTable();
         }
     });
 </script>
