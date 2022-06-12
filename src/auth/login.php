@@ -44,20 +44,6 @@
                         <label class="mb-1"><strong>Password</strong></label>
                         <input type="password" name="password" class="form-control" />
                       </div>
-                      <div class="mb-3">
-                        <select class="form-select" name="role" aria-label="Default select example">
-                          <option value="" selected>Pilih Role</option>
-                          <?php
-														include "../connection/connection.php";
-														$getRole = mysqli_query($conn, "SELECT * from roles");
-														while($data = mysqli_fetch_array($getRole)) {
-													?>
-                          <option value="<?php echo $data['role']; ?>"><?php echo $data['role']; ?></option>
-                          <?php
-														}
-													?>
-                        </select>
-                      </div>
                       <div class="d-grid gap-2 mt-5">
                         <button style="border-radius: 10px; background-color: #2196f3; color: white" type="submit" class="btn p-2">Login</button>
                       </div>
