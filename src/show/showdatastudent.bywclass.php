@@ -38,9 +38,16 @@
 										<?php 
 												include "../connection/connection.php";
 
+												mysqli_query($conn, "create or replace procedure showBill(in getWclass varchar(64))
+												begin
+												SELECT a.*, b.fullname, c.* FROM student as a inner join wclass as b on a.class = b.class right join spp as c on a.nis = c.nis where b.fullname = getWclass and month(c.duedate) = month(now()) order by a.student_name asc;
+												end");
+
 												$getWclas = $_SESSION['wclass'];
 
 												$getData = mysqli_query($conn,"SELECT a.*, b.fullname, c.* FROM student as a inner join wclass as b on a.class = b.class right join spp as c on a.nis = c.nis where b.fullname = '$getWclas' and month(c.duedate) = month(now()) order by a.student_name asc");
+
+												// $getData = mysqli_query($conn,"call showBill($getWclass)");
 
 												$no=1;
 												while($data = mysqli_fetch_array($getData)){
