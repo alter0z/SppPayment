@@ -9,7 +9,7 @@
 		if ($username == '' || $password == '') {
 			header('location:../auth/login.php?message=empty');
 		} else {
-			$login = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password' ");
+			$login = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password'");
 			$check = mysqli_num_rows($login);
 
 			if ($check > 0) {

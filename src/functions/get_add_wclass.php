@@ -3,7 +3,7 @@
 
   $count = mysqli_fetch_array(mysqli_query($conn, "SELECT count(*) from wclass"));
 
-  if ($count['count(*)'] >= 15) {
+  if ($count['count(*)'] >= 18) {
     header('location:../show/showdatawclass.php?message=add-wclass-dont');
   }
 

@@ -34,6 +34,7 @@
                     <th><strong>Jatuh Tempo</strong></th>
                     <th><strong>Status</strong></th>
                     <th><strong>...</strong></th>
+                    <th><strong>Rank</strong></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,12 @@
                   include "../connection/connection.php";
 
                   $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and month(b.duedate) = month(now()) and b.status = 'Belum Lunas' order by a.student_name asc");
+
+                  // $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, dense_rank() over (order by a.nis desc) as rank FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and month(b.duedate) = month(now()) and b.status = 'Belum Lunas'");
+
+                  // $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, rank() over (order by a.nis desc) as rank FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and month(b.duedate) = month(now()) and b.status = 'Belum Lunas'");
+
+                  // $getData = mysqli_query($conn,"SELECT a.*, b.*, c.fullname, dense_rank() over (order by a.nis desc) as rank FROM student as a inner join spp as b on a.nis = b.nis right join wclass as c on a.class = c.class where c.class in (a.class) and month(b.duedate) = month(now()) and b.status = 'Belum Lunas'");
                   $no=1;
 
                   while($data = mysqli_fetch_array($getData)) {
@@ -57,6 +64,7 @@
                     <td>$date</td>
                     <td>$data[status]</td>
                     <td><a class='btn btn-primary pay-button'>Bayar</a></td>
+                    <td>$data[rank]</td>
                     </tr>";
                     $no++;
                   }
